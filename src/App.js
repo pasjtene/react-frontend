@@ -1,9 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import UserComponent from './component/UserComponent';
+import Register from './Register';
+import HomeComponent from './component/HomeComponent';
+import { useState } from 'react';
+import Login from './component/Login';
 
 function App() {
+
   return (
     <div className="App">
+
+      <div className="register">
+
+      <HomeComponent/>
+
+      </div>
+        <p>
+          End User Component
+        </p>
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,7 +34,10 @@ function App() {
           Learn React
         </a>
       </header>
+
+
     </div>
+
   );
 }
 

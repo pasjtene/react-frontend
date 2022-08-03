@@ -1,0 +1,5 @@
+Starting the app in dev mode: npm start
+To compile the app: npm run build
+#Above creates a build folder with a production ready copy of the app and all needed files
+To run the production version: npm install -g serve
+then run: serve -s build 

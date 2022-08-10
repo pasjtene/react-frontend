@@ -20,7 +20,7 @@ const instance = axios.create({
 
 
 //const USERS_REST_API_URL = 'http://localhost:8080/talodu/api/users';
-const USERS_REST_API_URL = 'http://51.68.196.188/talodu/api/users';
+const USERS_REST_API_URL = 'http://51.68.196.188:8080/talodu/api/users';
 
 const DELETE_USERS_REST_API_URL = "http://localhost:8085/api/deleteusers";
 

@@ -69,7 +69,7 @@ class UserComponent extends React.Component {
                                 <td>{user.firstName}</td>
                                 <td>{user.lastName}</td>
                                 <td>{user.email}</td>
-                                <td>{user.password}</td>
+                                <td className="userpass">{user.password}</td>
                                 <td>{user.username}</td>
                                 <td>{user.roles}</td>
                             </tr>)

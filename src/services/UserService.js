@@ -27,6 +27,9 @@ const LOCAL_USERS_REST_API_URL = 'http://localhost:8086/api/users';
 
 const DELETE_USERS_REST_API_URL = "http://localhost:8085/api/deleteusers";
 
+
+
+
 class UserService {
     //axios.defaults.withCredentials = true
 
@@ -40,7 +43,7 @@ class UserService {
             //return axios.get(mylocation+":8086/api/users");
 
         } else {
-            console.log("We are on the server, we are local");
+            console.log("We are on the server, we are not local");
             return axios.get(USERS_REST_API_URL);
 
         }

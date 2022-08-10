@@ -18,7 +18,22 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%/:,."']).{8,24}$/;
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const REGISTER_URL = "/api/register";
-const API_URL = "http://localhost:8085/api/register ";
+
+
+let API_URL = "http://localhost:8085/api/register ";
+
+const mylocation = window.location.origin;
+
+        if(mylocation === "http://localhost:3000") {
+            console.log("Yes, we are local");
+            API_URL = "http://localhost:8086/api/register ";
+
+        } else {
+            console.log("We are on the server, we are not local");
+            API_URL =  'http://51.68.196.188:8080/talodu/api/register'
+
+        }
+
 
 const AddUser = () => {
    const userRef = useRef();
@@ -290,9 +305,9 @@ const removeById = (arr, id) => {
 
 
 //const handleSubmit = async (e) => {
-    const onSubmit = async (data,e) => {  
-e.preventDefault();
-console.log("The data: ", data);
+const onSubmit = async (data,e) => {  
+    e.preventDefault();
+    console.log("The data: ", data);
 
 
 try {

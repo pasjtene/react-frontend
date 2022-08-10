@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie';
 
 axios.defaults.withCredentials = true;
+const mylocation = window.location.origin;
+   
 
 
 //const USER_REGEX = /^[a-ZA-Z][a-zA-Z0-9-_]{3,23}$/;
@@ -22,7 +24,9 @@ const REGISTER_URL = "/api/register";
 
 //let API_URL = "http://localhost:8085/api/register ";
 
-const mylocation = window.location.origin;
+
+
+
 
 
 const AddUser = () => {
@@ -65,6 +69,7 @@ const [selectedId, setSelectedId] = useState(0);
 const [boxChecked, setBoxChecked] = useState(false);
 const [nUsersToDelete, setNusersToDelete] = useState(0);
 const [usersCSV, setUsersCSV] = useState("");
+const [api_url, setRegisterUrl] = useState("");
 
 useEffect( () => {
     
@@ -299,22 +304,25 @@ const onSubmit = async (data,e) => {
     e.preventDefault();
     console.log("The data: ", data);
 
-    var API_URL = "";
-
     if(mylocation === "http://localhost:3000") {
-        console.log("Yes, we are local");
-      API_URL = "http://localhost:8086/api/register ";
+    console.log("Yes, we are local");
+    setRegisterUrl("http://localhost:8086/api/register");
+  //API_URL = "http://localhost:8086/api/register";
 
-    } else {
-        console.log("We are on the server, we are not local");
-        API_URL =  'http://51.68.196.188:8080/talodu/api/register'
+} else {
+    console.log("We are on the server, we are not local");
+    //API_URL =  'http://51.68.196.188:8080/talodu/api/register'
 
-    }
+    setRegisterUrl("http://51.68.196.188:8080/talodu/api/register");
 
+}
+
+
+    
 
 try {
     //const response = await axios.post(API_URL, JSON.stringify({firstName, lastName, email, password}),
-    const response = await axios.post(API_URL, JSON.stringify(data),
+    const response = await axios.post(api_url, JSON.stringify(data),
     {
         headers: { 'Content-Type': 'application/json'}
 

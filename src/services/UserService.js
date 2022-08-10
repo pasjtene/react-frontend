@@ -25,6 +25,9 @@ const mylocation = window.location.origin;
 const USERS_REST_API_URL = 'http://51.68.196.188:8080/talodu/api/users';
 const LOCAL_USERS_REST_API_URL = 'http://localhost:8086/api/users';
 
+const REGISTER_API_URL = 'http://51.68.196.188:8080/talodu/api/register';
+const LOCAL_REGISTER_API_URL = 'http://localhost:8086/api/register';
+
 const DELETE_USERS_REST_API_URL = "http://localhost:8085/api/deleteusers";
 
 
@@ -50,6 +53,36 @@ class UserService {
     
        //return axios.get(USERS_REST_API_URL);
     }
+
+
+    registerUser(data) {
+
+
+        console.log("The current location...", window.location.origin);
+        if(mylocation === "http://localhost:3000") {
+            console.log("Yes, we are local");
+            return axios.post(LOCAL_REGISTER_API_URL, data,
+                {
+                     headers: { 'Content-Type': 'application/json'}
+             
+               }
+            );
+            //return axios.get(mylocation+":8086/api/users");
+
+        } else {
+            console.log("We are on the server, we are not local");
+            return axios.get(REGISTER_API_URL, data,
+                {
+                     headers: { 'Content-Type': 'application/json'}
+             
+               });
+
+        }
+
+
+    }
+
+
 
     deleteUsersCSV(data) {
         const instance = axios.create({

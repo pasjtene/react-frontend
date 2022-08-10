@@ -5,6 +5,7 @@ import axios from "axios";
 import LoginComponent from "./component/LoginComponent";
 import UserComponent from "./component/UserComponent";
 import Login from "./component/Login";
+import UserService from "./services/UserService";
 
 //const USER_REGEX = /^[a-ZA-Z][a-zA-Z0-9-_]{3,23}$/;
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -118,11 +119,13 @@ if(mylocation === "http://localhost:3000") {
 
 
 try {
-    const response = await axios.post(api_url, JSON.stringify({firstName, lastName, email, password}),
-    {
-        headers: { 'Content-Type': 'application/json'}
+    //const response = await axios.post(api_url, JSON.stringify({firstName, lastName, email, password}),
+    const response = await UserService.registerUser(JSON.stringify({firstName, lastName, email, password})
 
-    }
+    //,{
+       // headers: { 'Content-Type': 'application/json'}
+
+   // }
 
     );
     console.log(response?.data);

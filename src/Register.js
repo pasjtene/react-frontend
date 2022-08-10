@@ -12,6 +12,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%/:,."']).{8,24}$
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const REGISTER_URL = "/api/register";
 const API_URL = "http://localhost:8085/api/register ";
+const mylocation = window.location.origin;
 
 const Register = () => {
    const userRef = useRef();
@@ -40,6 +41,7 @@ const Register = () => {
    const [success, setSuccess] = useState(false);
 
    const [homePage, setHomePage] = useState("home");
+   const [api_url, setRegisterUrl] = useState("");
 
 
    useEffect( () => {
@@ -97,6 +99,23 @@ if(!v1 || !v2) {
  console.log(JSON.stringify({firstName, lastName, email, password}))
  return;
 }
+
+
+if(mylocation === "http://localhost:3000") {
+    console.log("from register.js Yes, we are local");
+    setRegisterUrl("http://localhost:8086/api/register");
+  //API_URL = "http://localhost:8086/api/register";
+
+} else {
+    console.log("From register.js We are on the server, we are not local");
+    //API_URL =  'http://51.68.196.188:8080/talodu/api/register'
+
+    setRegisterUrl("http://51.68.196.188:8080/talodu/api/register");
+
+}
+
+
+
 
 try {
     const response = await axios.post(API_URL, JSON.stringify({firstName, lastName, email, password}),

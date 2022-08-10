@@ -11,7 +11,7 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%/:,."']).{8,24}$/;
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const REGISTER_URL = "/api/register";
-const API_URL = "http://localhost:8085/api/register ";
+//const API_URL = "http://localhost:8085/api/register ";
 const mylocation = window.location.origin;
 
 const Register = () => {
@@ -118,7 +118,7 @@ if(mylocation === "http://localhost:3000") {
 
 
 try {
-    const response = await axios.post(API_URL, JSON.stringify({firstName, lastName, email, password}),
+    const response = await axios.post(api_url, JSON.stringify({firstName, lastName, email, password}),
     {
         headers: { 'Content-Type': 'application/json'}
 

@@ -71,7 +71,7 @@ class UserService {
 
         } else {
             console.log("We are on the server, we are not local");
-            return axios.get(REGISTER_API_URL, data,
+            return axios.post(REGISTER_API_URL, data,
                 {
                      headers: { 'Content-Type': 'application/json'}
              

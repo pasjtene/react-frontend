@@ -102,35 +102,14 @@ if(!v1 || !v2) {
 }
 
 
-if(mylocation === "http://localhost:3000") {
-    console.log("from register.js Yes, we are local");
-    setRegisterUrl("http://localhost:8086/api/register");
-  //API_URL = "http://localhost:8086/api/register";
-
-} else {
-    console.log("From register.js We are on the server, we are not local");
-    //API_URL =  'http://51.68.196.188:8080/talodu/api/register'
-
-    setRegisterUrl("http://51.68.196.188:8080/talodu/api/register");
-
-}
-
-
-
-
 try {
     //const response = await axios.post(api_url, JSON.stringify({firstName, lastName, email, password}),
     const response = await UserService.registerUser(JSON.stringify({firstName, lastName, email, password})
 
-    //,{
-       // headers: { 'Content-Type': 'application/json'}
-
-   // }
-
     );
     console.log(response?.data);
     setSuccess(true);
-    return;
+    //return;
 
 } catch (err) {
     console.log(err);

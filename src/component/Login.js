@@ -4,6 +4,7 @@ import Register from "../Register";
 import UserComponent from "./UserComponent";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import UserService from "../services/UserService";
 
 
 const AUTH_URL = "http://localhost:8085/api/authenticate";
@@ -39,11 +40,13 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
             
             try {
                 //const response = await axios.post(API_URL, JSON.stringify({firstName, lastName, email, password}),
-                const response = await axios.post(AUTH_URL, JSON.stringify(data),
-                {
-                    headers: { 'Content-Type': 'application/json'}
+                //const response = await axios.post(AUTH_URL, JSON.stringify(data),
+                const response = await UserService.authenticate(JSON.stringify(data)
+
+                //,{
+                  //  headers: { 'Content-Type': 'application/json'}
             
-                }
+                //}
             
                 );
                 console.log(response?.data);

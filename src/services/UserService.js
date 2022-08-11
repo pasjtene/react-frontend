@@ -28,11 +28,13 @@ const LOCAL_USERS_REST_API_URL = 'http://localhost:8086/api/users';
 const REGISTER_API_URL = 'http://51.68.196.188:8080/talodu/api/register';
 const LOCAL_REGISTER_API_URL = 'http://localhost:8086/api/register';
 
-const DELETE_USERS_REST_API_URL = "http://localhost:8085/api/deleteusers";
+
 
 const LOGIN_URL = 'http://51.68.196.188:8080/talodu/api/authenticate';
 const LOCAL_LOGIN_URL = 'http://localhost:8086/api/authenticate';
 
+const DELETE_USERS_API_URL = "http://51.68.196.188:8080/talodu/api/deleteusers";
+const LOCAL_DELETE_USERS_API_URL = "http://localhost:8086/api/deleteusers";
 
 
 
@@ -94,22 +96,12 @@ class UserService {
         console.log("The current location...", window.location.origin);
         if(mylocation === "http://localhost:3000") {
         
-            return instance.post(LOCAL_LOGIN_URL, data,
-                {
-                     headers: { 'Content-Type': 'application/json'}
-             
-               }
-            );
+            return instance.post(LOCAL_LOGIN_URL, data, { headers: { 'Content-Type': 'application/json'} });
             
-
         } else {
             
-            return instance.post(LOGIN_URL, data,
-                {
-                     headers: { 'Content-Type': 'application/json'}
-             
-               });
-
+            return instance.post(LOGIN_URL, data, { headers: { 'Content-Type': 'application/json'} });
+           
         }
     }
 
@@ -120,8 +112,14 @@ class UserService {
             withCredentials: true
           })
         console.log("The datum..",data);
-        return instance.post(DELETE_USERS_REST_API_URL, data
-            );
+
+        if(mylocation === "http://localhost:3000") {
+            return instance.post(LOCAL_DELETE_USERS_API_URL, data);
+        } else {
+            return instance.post(DELETE_USERS_API_URL, data);
+        }
+
+        
     }
     
     

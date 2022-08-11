@@ -147,6 +147,7 @@ console.log(e);
 e.preventDefault(); 
 
 const userc = Cookies.get('user-id');
+const userCookie = Cookies.get('user-id');
 setUserCookie(userc);
 console.log("The user cookie..", userc);
 
@@ -182,15 +183,15 @@ console.log("The user cookie 2....",userCookie);
 
       try {
         //const response = await axios.post(API_URL, JSON.stringify({firstName, lastName, email, password}),
-        const response = await axios.post(DELETE_USERS_REST_API_URL,  JSON.parse(JSON.stringify(selectedUsers)) ,
+        //const response = await axios.post(DELETE_USERS_REST_API_URL,  JSON.parse(JSON.stringify(selectedUsers)) ,
+        const response = await UserService.deleteUsersCSV(JSON.parse(JSON.stringify(selectedUsers), userCookie) ,
           
-        {
-            headers: { 'Content-Type': 'application/json', 
-            Authorization: userc},
-            withCredentials: true
-          }
-    
+        //{ headers: { 'Content-Type': 'application/json', Authorization: userc}, withCredentials: true } 
         );
+            
+            
+            
+        
         console.log(response?.data);
         if(response?.data.id !=0 ) {
             users.push(response?.data);

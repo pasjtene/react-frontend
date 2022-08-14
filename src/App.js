@@ -29,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeComponent/>} />
         <Route path="/api/login" element={<Login/>} />
+        <Route path="/talodu/api/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/users/list" element={<UserComponent/>} />
         <Route path="/user/add" element={<AddUser/>} />

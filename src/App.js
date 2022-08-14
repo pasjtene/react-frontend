@@ -10,6 +10,8 @@ import Navbar from './Navbar';
 import AddUser from './component/AddUserComponent';
 import Logout from './component/Logout';
 
+const mylocation = window.location.origin;
+
 function App() {
 
   console.log(window.location);
@@ -26,11 +28,14 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomeComponent/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/api/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/users/list" element={<UserComponent/>} />
         <Route path="/user/add" element={<AddUser/>} />
-        <Route path="/logout" element={<Logout/>} />
+
+        {mylocation === "http://localhost:3000"? <Route path="/api/logout" element={<Logout/>} /> : 
+        <Route path="/talodu/api/logout" element={<Logout/>} />}
+        
       </Routes>
 
     

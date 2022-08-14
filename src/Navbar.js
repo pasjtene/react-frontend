@@ -4,7 +4,7 @@ import { useState, useEffect, createContext } from "react";
 
 //export const SampleContext = createContext("");
 export const AuthContext = createContext("");
-
+const mylocation = window.location.origin;
 
     
 
@@ -45,9 +45,8 @@ export default function Navbar({ children, settings }) {
         >
             
             {children}
+
         </AuthContext.Provider>
-
-
             <Link to="/" className="site-title">
             Talodu home
             </Link>
@@ -66,7 +65,8 @@ export default function Navbar({ children, settings }) {
                 </li>
 
                 <li>
-                    {isUserAuth === "true" ? <CustomLink to="/logout">Logout</CustomLink>: <CustomLink to="/login">Login</CustomLink> }
+                    {isUserAuth === "true" ? <CustomLink to={mylocation === "http://localhost:3000"? "/api/logout":"/talodu/api/logout"}>Logout</CustomLink>: 
+                    <CustomLink to= {mylocation === "http://localhost:3000"? "/api/login":"/talodu/api/login"} >Login</CustomLink> }
                 </li>
 
 

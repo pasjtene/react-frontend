@@ -10,6 +10,7 @@ import HomeComponent from "./HomeComponent";
 import { ReactDOM } from "react";
 
 import {  AuthContext } from "../Navbar";
+import Navbar from "../Navbar";
 
 
 const AUTH_URL = "http://localhost:8085/api/authenticate";
@@ -35,6 +36,7 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
             case "register" : return (<div> <Register /> </div>);
             case "login": return (<div> <Login/> </div>);
             case "userlist": return (<div> <UserComponent/> </div>);
+            case "homepage": return (<div> <HomeComponent/> </div>);
         
         }
 
@@ -49,11 +51,13 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
                 const response = await UserService.authenticate(JSON.stringify(data));
                 
                 console.log(response?.data);
-                window.location.reload(false);
+                //window.location.reload(false);
 
                // setAuth("true");
 
                 console.log("Is user auth? ",isUserAuth);
+
+                setHomePage("homepage")
                 
                 
                 //setSuccess(true);
@@ -71,6 +75,7 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
 
         
             <div>
+                <Navbar/>
                 
                 <div className="firstNav">
                 <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>

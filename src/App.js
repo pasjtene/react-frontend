@@ -20,7 +20,7 @@ function App() {
     <div className="App">
 
 
-        <Navbar/>
+        
 
       <div className="register">
 
@@ -33,9 +33,8 @@ function App() {
         <Route path="/register" element={<Register/>} />
         <Route path="/users/list" element={<UserComponent/>} />
         <Route path="/user/add" element={<AddUser/>} />
-
-        {mylocation === "http://localhost:3000"? <Route path="/api/logout" element={<Logout/>} /> : 
-        <Route path="/talodu/api/logout" element={<Logout/>} />}
+        <Route path="/api/logout" element={<Logout/>} />
+        <Route path="/talodu/api/logout" element={<Logout/>} />
         
       </Routes>
 

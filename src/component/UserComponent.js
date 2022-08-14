@@ -4,6 +4,7 @@ import HomeComponent from "./HomeComponent";
 import Register from "../Register";
 import Login from "./Login";
 import AddUser from "./AddUserComponent";
+import Navbar from "../Navbar";
 
 class UserComponent extends React.Component {
 
@@ -38,6 +39,7 @@ class UserComponent extends React.Component {
          return (
              
             <div>
+                <Navbar/>
                  
             
                 <h1 className="text-center">List of users</h1>

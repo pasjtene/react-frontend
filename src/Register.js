@@ -6,6 +6,7 @@ import LoginComponent from "./component/LoginComponent";
 import UserComponent from "./component/UserComponent";
 import Login from "./component/Login";
 import UserService from "./services/UserService";
+import Navbar from "./Navbar";
 
 //const USER_REGEX = /^[a-ZA-Z][a-zA-Z0-9-_]{3,23}$/;
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -142,6 +143,8 @@ switch(homePage) {
         
         (
         <div>
+            <Navbar/>   
+
             <div className="firstNav">
                 <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
                 <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>

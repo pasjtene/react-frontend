@@ -10,6 +10,8 @@ import { SampleContext } from "../Navbar";
 
 class Logout extends React.Component {
 
+   // const { variableOne, Url } = useContext(SampleContext)
+
     constructor(props) {                
         super(props)
         this.state = {
@@ -19,11 +21,15 @@ class Logout extends React.Component {
         
     }
 
+    
+
     componentDidMount() {
         UserService.logOut().then((response) => {
             this.setState({ homePage: "login"})
             //Navbar().setAuth("false");
-            window.location.pathname = "/login";
+
+            //window.location.pathname = "/login";
+            
            window.location.reload(false);
         });
     }

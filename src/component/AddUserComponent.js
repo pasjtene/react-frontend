@@ -10,6 +10,7 @@ import UserService from "../services/UserService";
 import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie';
 import HomeComponent from "./HomeComponent";
+import Navbar from "../Navbar";
 
 
 axios.defaults.withCredentials = true;
@@ -359,6 +360,8 @@ switch(homePage) {
         
         (
         <div>
+
+            <Navbar/>
 
 
            

@@ -7,6 +7,7 @@ import UserComponent from "./UserComponent";
 import AddUser from "./AddUserComponent";
 import UserService from "../services/UserService";
 import NavBarComponent from "./NavBarComponent";
+import Navbar from "../Navbar";
 
 
 
@@ -30,6 +31,7 @@ if(UserService.getAuthCookie()==="true") {
     return (
 
         <div>
+            <Navbar/>
 
             <div className="firstNav">
 
@@ -57,6 +59,7 @@ if(UserService.getAuthCookie()==="true") {
         return (
 
             <div>
+                <Navbar/>
 
                 <div className="firstNav">
 

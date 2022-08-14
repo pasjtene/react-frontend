@@ -30,7 +30,7 @@ class Logout extends React.Component {
 
             //window.location.pathname = "/login";
             
-           window.location.reload(false);
+           //window.location.reload(false);
         });
     }
 

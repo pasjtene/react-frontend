@@ -19,6 +19,15 @@ code {
   box-sizing: border-box;
 }
 
+.parentdiv {
+  border: 2px solid green;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+  width: 1200px;
+}
+
 html {
   font-family: "Nunito", sans-serif;
   font-size: 22px;

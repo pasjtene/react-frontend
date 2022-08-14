@@ -74,8 +74,12 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
         return (
 
         
-            <div>
+            <div className="parentdiv"> 
+
+
+            <div className="navDiv">
                 <Navbar/>
+            </div>
                 
                 <div className="firstNav">
                 <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>

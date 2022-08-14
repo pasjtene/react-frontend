@@ -22,7 +22,7 @@ function App() {
 
         
 
-      <div className="register">
+      <div className="register1">
 
       
 

@@ -142,8 +142,12 @@ switch(homePage) {
         ): 
         
         (
-        <div>
-            <Navbar/>   
+            <div className="parentdiv"> 
+
+
+            <div className="navDiv">
+                <Navbar/>
+            </div>
 
             <div className="firstNav">
                 <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>

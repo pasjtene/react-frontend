@@ -30,8 +30,12 @@ if(UserService.getAuthCookie()==="true") {
 
     return (
 
-        <div>
+        <div className="parentdiv"> 
+
+
+        <div className="navDiv">
             <Navbar/>
+        </div>
 
             <div className="firstNav">
 
@@ -58,8 +62,12 @@ if(UserService.getAuthCookie()==="true") {
 
         return (
 
-            <div>
+            <div className="parentdiv"> 
+
+
+            <div className="navDiv">
                 <Navbar/>
+            </div>
 
                 <div className="firstNav">
 

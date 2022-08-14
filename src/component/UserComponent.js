@@ -38,8 +38,12 @@ class UserComponent extends React.Component {
 
          return (
              
-            <div>
-                <Navbar/>
+            <div className="parentdiv"> 
+
+
+                <div className="navDiv">
+                    <Navbar/>
+                </div>
                  
             
                 <h1 className="text-center">List of users</h1>

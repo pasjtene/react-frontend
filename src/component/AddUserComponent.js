@@ -359,12 +359,16 @@ switch(homePage) {
         ): 
         
         (
-        <div>
-
-            <Navbar/>
+        <div className="parentdiv"> 
 
 
-           
+                <div className="navDiv">
+                    <Navbar/>
+                </div>
+            
+
+            <div className="constainer">
+
             <div ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive"> {errMsg} </div>
             <h1>Add user</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -418,6 +422,13 @@ switch(homePage) {
                 <button disabled={validFirstName}>Sign Up</button>
             </form>
 
+
+
+            </div>
+
+
+           
+           
             <div>
                 <h6>Already a member? <span onClick={() => setHomePage("login")}> Sign in</span> </h6>
             </div>

@@ -38,15 +38,7 @@ class UserComponent extends React.Component {
          return (
              
             <div>
-                <div className="firstNav">
-                <h6>
-                <span className="homeLinks" onClick={()=>{this.setState({ homePage: "userlist"}) }}> list of courses </span>
-                <span className="homeLinks" onClick={()=> {this.setState({ homePage: "register"}) }}>Register</span>
-                 <span className="homeLinks" onClick={()=> {this.setState({ homePage: "login"}) }}> login</span>
-                 <span className="homeLinks" onClick={()=> {this.setState({ homePage: "adduser"}) }}> Add user</span> 
-                 </h6>
-                
-                </div>   
+                 
             
                 <h1 className="text-center">List of users</h1>
                 

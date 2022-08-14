@@ -9,6 +9,8 @@ import Register from "../Register";
 import UserService from "../services/UserService";
 import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie';
+import HomeComponent from "./HomeComponent";
+
 
 axios.defaults.withCredentials = true;
 const mylocation = window.location.origin;
@@ -23,10 +25,6 @@ const REGISTER_URL = "/api/register";
 
 
 //let API_URL = "http://localhost:8085/api/register ";
-
-
-
-
 
 
 const AddUser = () => {
@@ -98,6 +96,8 @@ const handleSelectedUser = (id, userSected) => {
     if(userSected) {
         setSelectedUser(id+userSected);
         //setSelectedUser(id);
+
+        console.log("Is user auth ?..", UserService.getAuthCookie());
         console.log("The user is selected");
         selectedUsers.push(id);
 
@@ -110,11 +110,6 @@ const handleSelectedUser = (id, userSected) => {
     } else {
         setSelectedUser(id+userSected);
         //console.log("The user is NOT selected");
-        
-        //var array = [...selectedUsers];
-        //const index = array.indexOf(id);
-
-        //console.log("The index is: ",index);
         if (index > -1) { // only splice array when item is found
            array.splice(index, 1); // 2nd parameter means remove one item only
             setSelectedUsers(array);
@@ -177,21 +172,15 @@ console.log("The user cookie 2....",userCookie);
         'Authorization': 'JWT fefege...'
       };
 
-      const DELETE_USERS_REST_API_URL = "http://localhost:8085/api/deleteusers";
+      //const DELETE_USERS_REST_API_URL = "http://localhost:8085/api/deleteusers";
 
 
 
       try {
-        //const response = await axios.post(API_URL, JSON.stringify({firstName, lastName, email, password}),
-        //const response = await axios.post(DELETE_USERS_REST_API_URL,  JSON.parse(JSON.stringify(selectedUsers)) ,
-        const response = await UserService.deleteUsersCSV(JSON.parse(JSON.stringify(selectedUsers), userCookie) ,
-          
-        //{ headers: { 'Content-Type': 'application/json', Authorization: userc}, withCredentials: true } 
-        );
+
+        const response = await UserService.deleteUsersCSV(JSON.parse(JSON.stringify(selectedUsers), userCookie) );
             
             
-            
-        
         console.log(response?.data);
         if(response?.data.id !=0 ) {
             users.push(response?.data);
@@ -207,14 +196,6 @@ console.log("The user cookie 2....",userCookie);
     } catch (err) {
         console.log(err);
     }
-    
-
-    
-    
-
-
-
-
         //UserService.deleteUsersCSV(selectedUsers).then((response)=>{
 
         //console.log("The reponse from server: ",response);
@@ -366,22 +347,21 @@ switch(homePage) {
 
     return (
         <>
+
         
         { success ? (
             <div>
                 <h1>Success!</h1>
+                
                 <UserComponent/>
             </div>
         ): 
         
         (
         <div>
-            <div className="firstNav">
-                <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
-                <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>
-                 <span className="homeLinks" onClick={()=> setHomePage("login")}> login</span>
-                 <span className="homeLinks" onClick={()=> setHomePage("adduser")}> adduser</span></h6>
-                </div>
+
+
+           
             <div ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive"> {errMsg} </div>
             <h1>Add user</h1>
             <form onSubmit={handleSubmit(onSubmit)}>

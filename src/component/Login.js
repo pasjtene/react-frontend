@@ -1,10 +1,15 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Register from "../Register";
 import UserComponent from "./UserComponent";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import UserService from "../services/UserService";
+import HomeComponent from "./HomeComponent";
+
+import { ReactDOM } from "react";
+
+import {  AuthContext } from "../Navbar";
 
 
 const AUTH_URL = "http://localhost:8085/api/authenticate";
@@ -15,6 +20,8 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
     
     const Login = () => {
         const [homePage, setHomePage] = useState("home");
+        const { isUserAuth } = useContext(AuthContext)
+       const [isAuth, setAuth ] = useContext(AuthContext);
 
         const { register, handleSubmit } = useForm({
             defaultValues: {
@@ -39,30 +46,32 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
             
             
             try {
-                //const response = await axios.post(API_URL, JSON.stringify({firstName, lastName, email, password}),
-                //const response = await axios.post(AUTH_URL, JSON.stringify(data),
-                const response = await UserService.authenticate(JSON.stringify(data)
-
-                //,{
-                  //  headers: { 'Content-Type': 'application/json'}
-            
-                //}
-            
-                );
+                const response = await UserService.authenticate(JSON.stringify(data));
+                
                 console.log(response?.data);
+                window.location.reload(false);
+
+               // setAuth("true");
+
+                console.log("Is user auth? ",isUserAuth);
                 
                 
                 //setSuccess(true);
             
             } catch (err) {
+                console.log("error....Is user auth? ",isUserAuth);
                 console.log(err);
             }
             
             }
 
         
+        
         return (
+
+        
             <div>
+                
                 <div className="firstNav">
                 <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
                 <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>

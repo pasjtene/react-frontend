@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from 'js-cookie';
 //import useAxios, { configure } from 'axios-hooks'
 axios.defaults.withCredentials = true;
 const API_SERVER = 'http://localhost:8085/api';
@@ -22,6 +23,7 @@ const instance = axios.create({
 //const USERS_REST_API_URL = 'http://localhost:8080/talodu/api/users';
 
 const mylocation = window.location.origin;
+
 const USERS_REST_API_URL = 'http://51.68.196.188:8080/talodu/api/users';
 const LOCAL_USERS_REST_API_URL = 'http://localhost:8086/api/users';
 
@@ -36,6 +38,11 @@ const LOCAL_LOGIN_URL = 'http://localhost:8086/api/authenticate';
 const DELETE_USERS_API_URL = "http://51.68.196.188:8080/talodu/api/deleteusers";
 const LOCAL_DELETE_USERS_API_URL = "http://localhost:8086/api/deleteusers";
 
+const LOGOUT_API_URL = "http://51.68.196.188:8080/talodu/api/logout";
+const LOCAL_LOGOUT_API_URL = "http://localhost:8086/api/logout";
+
+
+
 
 
 
@@ -43,14 +50,19 @@ const LOCAL_DELETE_USERS_API_URL = "http://localhost:8086/api/deleteusers";
 class UserService {
     //axios.defaults.withCredentials = true
 
-    
 
+    getAuthCookie() {
+        const auth = Cookies.get('isUserAuth');
+        return auth;
+    }
+
+    
     getUsers() {
-        console.log("The current location...", window.location.origin);
+        
         if(mylocation === "http://localhost:3000") {
             console.log("Yes, we are local");
             return axios.get(LOCAL_USERS_REST_API_URL);
-            //return axios.get(mylocation+":8086/api/users");
+            
 
         } else {
             console.log("We are on the server, we are not local");
@@ -58,14 +70,25 @@ class UserService {
 
         }
     
-       //return axios.get(USERS_REST_API_URL);
+    }
+
+
+    logOut () {
+        console.log("The current location...", window.location.origin);
+        if(mylocation === "http://localhost:3000") {
+            console.log("Yes, we are local");
+            return axios.get(LOCAL_LOGOUT_API_URL);
+            
+
+        } else {
+            console.log("We are on the server, we are not local");
+            return axios.get(LOGOUT_API_URL);
+
+        }
     }
 
 
     registerUser(data) {
-
-
-        console.log("The current location...", window.location.origin);
         if(mylocation === "http://localhost:3000") {
         
             return axios.post(LOCAL_REGISTER_API_URL, data,

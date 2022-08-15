@@ -16,7 +16,6 @@ const NavBarComponent = () =>  {
 
     //render () {
 
-        
         switch (homePage) {
             case "register" : return (<div> <Register /> </div>);
             case "login": return (<div> <Login/> </div>);

@@ -30,27 +30,22 @@ if(UserService.getAuthCookie()==="true") {
 
     return (
 
-        <div className="parentdiv"> 
+        <div className="container">
+                <div className="parentdiv"> 
 
-
-        <div className="navDiv">
-            <Navbar/>
+                            <div className="firstNav">
+                                <h6>
+                                    <span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
+                                    <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>
+                                    <span className="homeLinks" onClick={()=> setHomePage("adduser")}> Add user</span>
+                                </h6>
+                                <span className="homeLinks" onClick={()=> setHomePage("login")}> logout</span>
+                            <div>
+                        Welcome to the react and spring boot full stack secure app training ... We are logged in
+                </div>
+        </div>
         </div>
 
-            <div className="firstNav">
-
-        
-            <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
-            <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>
-             
-             <span className="homeLinks" onClick={()=> setHomePage("adduser")}> Add user</span></h6>
-             <span className="homeLinks" onClick={()=> setHomePage("login")}> logout</span>
-
-            </div>
-
-            <div>
-                Welcome to the react and spring boot full stack secure app training ... We are logged in
-            </div>
         </div>
     )
 
@@ -62,28 +57,45 @@ if(UserService.getAuthCookie()==="true") {
 
         return (
 
-            <div className="parentdiv"> 
-
-
-            <div className="navDiv">
-                <Navbar/>
-            </div>
-
-                <div className="firstNav">
-
-                <div> <NavBarComponent /> </div>
-                <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
-                <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>
-                 
-                 <span className="homeLinks" onClick={()=> setHomePage("adduser")}> Add user</span></h6>
-                    <span className="homeLinks" onClick={()=> setHomePage("login")}> login</span>
             
-                </div>
+            <div>
+                
 
-                <div>
+                <div className="parentdiv"> 
+
+                   
+
+                    <div className="container">
+
+                    <div className="firstNav">
+
+                        <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
+                        <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>
+
+                        <span className="homeLinks" onClick={()=> setHomePage("adduser")}> Add user</span></h6>
+                            <span className="homeLinks" onClick={()=> setHomePage("login")}> login</span>
+
+                    </div>
+
+                    <div>
                     Welcome to the react and spring boot full stack secure app training ... We are NOT auth
-                </div>
+                    </div>
+
+                    </div>
+
+                
             </div>
+
+
+
+
+
+            </div>
+            
+            
+            
+            
+            
         )
 
 

@@ -145,97 +145,106 @@ switch(homePage) {
             <div className="parentdiv"> 
 
 
-            <div className="navDiv">
-                <Navbar/>
-            </div>
+            <div className="container">
 
-            <div className="firstNav">
-                <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
-                <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>
-                 <span className="homeLinks" onClick={()=> setHomePage("login")}> login</span></h6>
-                </div>
+                    <div className="firstNav">
+                        <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
+                        <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>
+                        <span className="homeLinks" onClick={()=> setHomePage("login")}> login</span></h6>
+                    </div>
             <div ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive"> {errMsg} </div>
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">
-                    First Name:
-                </label>
-                <input
-                type="text"
-                id="username"
-                ref={userRef}
-                autoComplete="off"
-                //onChange={(e) => setUser(e.target.value)}
-                onChange={(e) => setFirstName(e.target.value)}
-                
 
-                value={firstName}
-                required
-                aria-invalid={validName ? "false": "true"}
-                onFocus={() => setUserFocus(true)}
-                onBlur={() => setUserFocus(false)}
-                />
 
-                <div id="uinote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
-                    <FontAwesomeIcon icon={faInfoCircle}/>
-                    4 to 24 characters. <br/>
-                    Must begin with a letter. <br/>
-                    Letter, numbers, underscores, hyphens allowed.
-                </div>
+                        <div className="addUserForm">
 
-                <label htmlFor="lastname">
-                    Last Name:
-                </label>
 
-                <input type="text"
-                onChange={(e) => setLastName(e.target.value)}
-                value={lastName}
-                />
+                                <h1>Register</h1>
 
-                <label htmlFor="email">
-                    Email:
-                </label>
+                                <form onSubmit={handleSubmit}>
+                                    <label htmlFor="username">
+                                        First Name:
+                                    </label>
+                                    <input
+                                    type="text"
+                                    id="username"
+                                    ref={userRef}
+                                    autoComplete="off"
+                                    //onChange={(e) => setUser(e.target.value)}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    
 
-                <input type="text"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                />
+                                    value={firstName}
+                                    required
+                                    aria-invalid={validName ? "false": "true"}
+                                    onFocus={() => setUserFocus(true)}
+                                    onBlur={() => setUserFocus(false)}
+                                    />
 
-                <label htmlFor="password">
-                    Password:
-                    <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validPwd || !password ? "hide" : "invalid"} />
-                </label>
+                                    <div id="uinote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+                                        <FontAwesomeIcon icon={faInfoCircle}/>
+                                        4 to 24 characters. <br/>
+                                        Must begin with a letter. <br/>
+                                        Letter, numbers, underscores, hyphens allowed.
+                                    </div>
 
-                <input type="password" id="password"
-                onChange={(e) => setPwd(e.target.value)} 
-                value={password}
-                onFocus={() => setPwdFocus(true)}
-                />
+                                    <label htmlFor="lastname">
+                                        Last Name:
+                                    </label>
 
-                <div id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                    8 to 24 characters. <br/>
-                    Must include uppercase and lowercase, a number and a speciat charecter. <br/>
-                    Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                </div>
+                                    <input type="text"
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    value={lastName}
+                                    />
 
-                <label htmlFor="confirm_pwd">
-                    Confirm Password:
-                    <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid":"hide"}/>
-                    <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide":"invalid"}/>
-                </label>
+                                    <label htmlFor="email">
+                                        Email:
+                                    </label>
 
-                <input type="password" id="confirm_pwd" onChange={(e) => setMatchPwd(e.target.value)}/>
+                                    <input type="text"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={email}
+                                    />
 
-                <p>
-                </p>
+                                    <label htmlFor="password">
+                                        Password:
+                                        <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
+                                        <FontAwesomeIcon icon={faTimes} className={validPwd || !password ? "hide" : "invalid"} />
+                                    </label>
 
-                <button disabled={!validFirstName}>Sign Up</button>
-            </form>
+                                    <input type="password" id="password"
+                                    onChange={(e) => setPwd(e.target.value)} 
+                                    value={password}
+                                    onFocus={() => setPwdFocus(true)}
+                                    />
 
-            <div>
-                <h6>Already a member? <span onClick={() => setHomePage("login")}> Sign in</span> </h6>
+                                    <div id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+                                        8 to 24 characters. <br/>
+                                        Must include uppercase and lowercase, a number and a speciat charecter. <br/>
+                                        Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                                    </div>
+
+                                    <label htmlFor="confirm_pwd">
+                                        Confirm Password:
+                                        <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid":"hide"}/>
+                                        <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide":"invalid"}/>
+                                    </label>
+
+                                    <input type="password" id="confirm_pwd" onChange={(e) => setMatchPwd(e.target.value)}/>
+
+                                    <p>
+                                    </p>
+
+                                    <button disabled={!validFirstName}>Sign Up</button>
+                                </form>
+
+                                <div>
+                                    <h6>Already a member? <span onClick={() => setHomePage("login")}> Sign in</span> </h6>
+                                </div>
+
+                        </div>
+
             </div>
+
 
         </div>
     )}

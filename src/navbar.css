@@ -7,9 +7,18 @@ body {
 }
 
 .navDiv {
-  border: 1px solid red;
-  width: 90%;
+  border: 1px solid gray;
+  flex-wrap: wrap;
+  flex: 0 0 97%;
+}
+
+.navDivIner {
+  /*
+  width: 1200px;
+  flex: 98%;
   margin-left: 5%;
+  */
+  flex: 0 0 97%;
 }
 
 .site-title {

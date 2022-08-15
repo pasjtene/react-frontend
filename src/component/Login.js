@@ -77,17 +77,14 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
             <div className="parentdiv"> 
 
 
-            <div className="navDiv">
-                <Navbar/>
-            </div>
-                
-                <div className="firstNav">
+            <div className="logincontainer">
+            <div className="firstNav">
                 <h6><span className="homeLinks" onClick={()=>setHomePage("userlist")}> list of courses </span>
                 <span className="homeLinks" onClick={()=> setHomePage("register")}>Register</span>
                  <span className="homeLinks" onClick={()=> setHomePage("login")}> login</span></h6>
-                </div>      
+                </div> 
 
-            
+
             <h1>Login here</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="email">
@@ -110,7 +107,11 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
             <button>Login</button>
 
             </form>
-            
+
+
+            </div>
+
+
         </div>
         )
 

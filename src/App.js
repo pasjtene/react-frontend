@@ -9,34 +9,54 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import AddUser from './component/AddUserComponent';
 import Logout from './component/Logout';
+import { useRef, useEffect } from 'react';
 
 const mylocation = window.location.origin;
 
 function App() {
 
   console.log(window.location);
+  const ref = useRef(null);
+
+  useEffect(() => {
+
+    const el = document.getElementById('loginout');
+    console.log("The ellement...", el);
+
+    // 👇️ (better) use a ref
+    const el2 = ref.current;
+    console.log(el2);
+
+  },[]
+
+  );
 
   return (
     <div className="App">
 
-
+          <div className="navDiv">
+            <div className='navDivIner'>
+            <Navbar/>
+            </div>
+                   
+                </div>
         
 
-      <div className="register1">
+      <div className="container1">
 
       
 
-      <Routes>
-        <Route path="/" element={<HomeComponent/>} />
-        <Route path="/api/login" element={<Login/>} />
-        <Route path="/talodu/api/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/users/list" element={<UserComponent/>} />
-        <Route path="/user/add" element={<AddUser/>} />
-        <Route path="/api/logout" element={<Logout/>} />
-        <Route path="/talodu/api/logout" element={<Logout/>} />
-        
-      </Routes>
+                <Routes>
+                  <Route path="/" element={<HomeComponent/>} />
+                  <Route path="/api/login" element={<Login/>} />
+                  <Route path="/talodu/api/login" element={<Login/>} />
+                  <Route path="/register" element={<Register/>} />
+                  <Route path="/users/list" element={<UserComponent/>} />
+                  <Route path="/user/add" element={<AddUser/>} />
+                  <Route path="/api/logout" element={<Logout/>} />
+                  <Route path="/talodu/api/logout" element={<Logout/>} />
+                  
+                </Routes>
 
     
       </div>

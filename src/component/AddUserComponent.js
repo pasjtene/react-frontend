@@ -361,122 +361,113 @@ switch(homePage) {
         (
         <div className="parentdiv"> 
 
+        
+                        <div className="container">
 
-                <div className="navDiv">
-                    <Navbar/>
-                </div>
-            
+                                    <div 
+                                        ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive"> {errMsg} 
+                                    </div>
+                                    <h1>Add user</h1>
 
-            <div className="constainer">
+                                    <div className="addUserForm"> 
+                                            <form onSubmit={handleSubmit(onSubmit)}>
+                                                <label htmlFor="firstame">
+                                                    First Name:
+                                                </label>
+                                                <input
+                                            // type="text" id="username" ref={userRef} autoComplete="off"
+                                                
+                                                //onChange={(e) => setFirstName(e.target.value)}
+                                                
+                                                
+                                                {...register("firstName")}
+                                                //value={firstName}
+                                                //required
+                                                //aria-invalid={validName ? "false": "true"}
+                                                //onFocus={() => setUserFocus(true)}
+                                                //onBlur={() => setUserFocus(false)}
+                                                />
 
-            <div ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive"> {errMsg} </div>
-            <h1>Add user</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="firstame">
-                    First Name:
-                </label>
-                <input
-               // type="text" id="username" ref={userRef} autoComplete="off"
-                
-                //onChange={(e) => setFirstName(e.target.value)}
-                 
-                
-                {...register("firstName")}
-                //value={firstName}
-                //required
-                //aria-invalid={validName ? "false": "true"}
-                //onFocus={() => setUserFocus(true)}
-                //onBlur={() => setUserFocus(false)}
-                />
+                                                <p id="uinote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+                                                    <FontAwesomeIcon icon={faInfoCircle}/>
+                                                    4 to 24 characters. <br/>
+                                                    Must begin with a letter. <br/>
+                                                    Letter, numbers, underscores, hyphens allowed.
+                                                </p>
 
-                <p id="uinote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
-                    <FontAwesomeIcon icon={faInfoCircle}/>
-                    4 to 24 characters. <br/>
-                    Must begin with a letter. <br/>
-                    Letter, numbers, underscores, hyphens allowed.
-                </p>
+                                                <label htmlFor="lastname">
+                                                    Last Name:
+                                                </label>
 
-                <label htmlFor="lastname">
-                    Last Name:
-                </label>
+                                                <input 
+                                                //onChange={(e) => setLastName(e.target.value)}
+                                            // value={lastName}
+                                                {...register("lastName")}
+                                                />
 
-                <input 
-                //onChange={(e) => setLastName(e.target.value)}
-               // value={lastName}
-                {...register("lastName")}
-                />
+                                                <label htmlFor="email">
+                                                    Email:
+                                                </label>
 
-                <label htmlFor="email">
-                    Email:
-                </label>
+                                                <input 
+                                                    {...register("email")}
+                                                />
 
-                <input 
-                {...register("email")}
-               />
+                                                <p>
+                                                </p>
 
-                <p>
-                </p>
+                                                <button disabled={validFirstName}>Sign Up</button>
+                                            </form>
+                                    </div>
 
-                
-
-                <button disabled={validFirstName}>Sign Up</button>
-            </form>
-
-
-
-            </div>
-
-
-           
-           
-            <div>
-                <h6>Already a member? <span onClick={() => setHomePage("login")}> Sign in</span> </h6>
-            </div>
-
-
-
-            <h1 className="text-center">List of users</h1>
-
-
-            <span onClick={(e)=>{ handleDeleteUsers(e, selectedUsers); 
-                console.log("The users to be deleted", selectedUsers, selectedUsers.toString());
-
-                console.log("User deleted: ",userAdded);
-                }}>Delete users {nUsersToDelete} </span>
-                
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <td>User Id</td>
-                            <td>User First name</td>
-                            <td>User last Name</td>
-                            <td>User email</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            [...data].reverse().map(user => <tr key = {user.email}>
-                                <td>{user.id}</td>
-                                <td>{user.firstName}</td>
-                                <td>{user.lastName}</td>
-                                <td>{user.email}</td>
-                                <td><input type="checkbox" id={user.id} onChange={(e)=>{
                                     
-                                    //setSelectedUser(e.target.id);
 
-                                    handleSelectedUser(e.target.id, e.target.checked);
-                                    //console.log(e.target.id);
-                                    setSelectedId(e.target.id);
-                                    setBoxChecked(e.target.checked);
-                                    //setUserAdded("yes");
-                                    }}/></td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
+                                <div>
+                                    <h6>Already a member? <span onClick={() => setHomePage("login")}> Sign in</span> </h6>
+                                </div>
+
+                                <h1 className="text-center">List of users</h1>
+
+                                <span 
+                                    onClick={(e)=>{ handleDeleteUsers(e, selectedUsers); }}>Delete users {nUsersToDelete}
+                                </span>
 
 
-        </div>
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <td>User Id</td>
+                                            <td>User First name</td>
+                                            <td>User last Name</td>
+                                            <td>User email</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            [...data].reverse().map(user => <tr key = {user.email}>
+                                                <td>{user.id}</td>
+                                                <td>{user.firstName}</td>
+                                                <td>{user.lastName}</td>
+                                                <td>{user.email}</td>
+                                                <td><input type="checkbox" id={user.id} onChange={(e)=>{
+                                                    
+                                                    //setSelectedUser(e.target.id);
+
+                                                    handleSelectedUser(e.target.id, e.target.checked);
+                                                    //console.log(e.target.id);
+                                                    setSelectedId(e.target.id);
+                                                    setBoxChecked(e.target.checked);
+                                                    //setUserAdded("yes");
+                                                    }}/></td>
+                                            </tr>)
+                                        }
+                                        </tbody>
+                                    </table>
+
+
+                                    </div>
+                     
+                        </div>
     )}
     </>
     )

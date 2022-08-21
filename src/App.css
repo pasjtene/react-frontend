@@ -1,7 +1,17 @@
 .App {
+  /*
+  width: 100vh;
+  height: 100vh;
+  
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+  */
+}
+
+.body {
+  margin: 0;
+  padding: 0;
 }
 
 .App-logo {

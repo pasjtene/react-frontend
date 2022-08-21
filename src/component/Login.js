@@ -11,6 +11,8 @@ import { ReactDOM } from "react";
 
 import {  AuthContext } from "../Navbar";
 import Navbar from "../Navbar";
+import uploadFile from "./UploadFile";
+import { UploadFile } from "@mui/icons-material";
 
 
 const AUTH_URL = "http://localhost:8085/api/authenticate";
@@ -50,7 +52,7 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
             try {
                 const response = await UserService.authenticate(JSON.stringify(data));
                 
-                console.log(response?.data);
+                console.log("Received auth data", response?.data);
                 //window.location.reload(false);
 
                // setAuth("true");
@@ -75,7 +77,8 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
 
         
             <div className="parentdiv"> 
-
+              
+              <UploadFile/>
 
             <div className="logincontainer">
             <div className="firstNav">

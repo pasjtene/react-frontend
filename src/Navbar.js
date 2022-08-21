@@ -1,6 +1,10 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import UserService from "./services/UserService";
 import { useState, useEffect, createContext, useRef } from "react";
+import  {ReorderIcon} from "@mui/icons-material";
+import { SearchIcon } from "react-router-dom";
+import { Reorder } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 
 
 //export const SampleContext = createContext("");
@@ -29,6 +33,7 @@ export default function Navbar({ children, settings }) {
     //console.log("Is user auth ?.. from navbar component....", UserService.getAuthCookie());
 
     const [currentSettings, setCurrentSettings] = useState(settings  );
+    const [showLinks, setShowLinks] = useState(false);
     const ref = useRef(null);
 
     const [user, setUser] = useState({});
@@ -77,12 +82,7 @@ export default function Navbar({ children, settings }) {
 
           setInterval(() => {
             const userString1 = UserService.getAuthCookie();
-           //isAuth = UserService.getAuthCookie();
-            //isUserAuth = UserService.getAuthCookie();
-            //const user = JSON.parse(userString);
-            //console.log("");
-           // setUser(user);
-            //setUserAuth(userString1);
+           
 
             if(userString1 === "true") {
                 setAuthVal("LogOut");
@@ -107,43 +107,121 @@ export default function Navbar({ children, settings }) {
 
     return (
 
+        <div>
 
-        <nav className="nav">
+<nav className="nav">
 
+            <div>
+                <Link to="/" className="site-title">
+                    Talodu home
+                </Link>
+            </div>
 
-        <AuthContext.Provider 
-        value={{ settings: currentSettings, saveSettings }}
-        >
-            
-            {children}
+            <div >
 
-        </AuthContext.Provider>
-            <Link to="/" className="site-title">
-            Talodu home
-            </Link>
+                    <ul>
+                        
 
-            <ul>
-            <li>
-                    <CustomLink to="/user/add">Add user</CustomLink>
-                </li>
-                
-                <li>
-                    <CustomLink to="/users/list">Liste Users</CustomLink>
-                </li>
+                        <li>
+                        <CustomLink to="/register">Register</CustomLink>
+                        </li>
 
-                <li>
-                <CustomLink to="/register">Register</CustomLink>
-                </li>
-
-                <li>
-                    {isAuth || isUserAuth === "true" ? 
-                    <CustomLink id="loginout" to={mylocation === "http://localhost:3000"? "/api/logout":"/talodu/api/logout"}>{isAuthVal}</CustomLink>: 
-                    <CustomLink  id="loginout" to= {mylocation === "http://localhost:3000"? "/api/login":"/talodu/api/login"} >{isAuthVal}</CustomLink> }
-                </li>
+                        <li>
+                            {isAuth || isUserAuth === "true" ? 
+                            <CustomLink id="loginout" to={mylocation === "http://localhost:3000"? "/api/logout":"/talodu/api/logout"}>{isAuthVal}</CustomLink>: 
+                            <CustomLink  id="loginout" to= {mylocation === "http://localhost:3000"? "/api/login":"/talodu/api/login"} >{isAuthVal}</CustomLink> }
+                        </li>
 
 
-            </ul>
+                    </ul>
+
+            </div>
         </nav>
+
+        <div className="navBar">
+
+        <div className="leftSide">
+
+        <ul className="Links1" >
+            
+
+            <li>
+                            <CustomLink to="/user/add">Add user</CustomLink>
+                        </li>
+                        
+                        <li>
+                            <CustomLink to="/users/list">Liste Users</CustomLink>
+                        </li>
+                     
+                       
+
+                        <li>
+                        <CustomLink to="/register">Register</CustomLink>
+                        </li>
+
+                        <li>
+                            {isAuth || isUserAuth === "true" ? 
+                            <CustomLink id="loginout" to={mylocation === "http://localhost:3000"? "/api/logout":"/talodu/api/logout"}>{isAuthVal}</CustomLink>: 
+                            <CustomLink  id="loginout" to= {mylocation === "http://localhost:3000"? "/api/login":"/talodu/api/login"} >{isAuthVal}</CustomLink> }
+                        </li>
+
+            
+                  
+        </ul>
+
+
+        
+            <div  >
+            <ul className="Links" id={showLinks ? "hidden": ""} >
+
+            <li>
+                            <CustomLink to="/user/add">Add user</CustomLink>
+                        </li>
+                        
+                        <li>
+                            <CustomLink to="/users/list">Liste Users</CustomLink>
+                        </li>
+                     
+                       
+
+                        <li>
+                        <CustomLink to="/register">Register</CustomLink>
+                        </li>
+
+                        <li>
+                            {isAuth || isUserAuth === "true" ? 
+                            <CustomLink id="loginout" to={mylocation === "http://localhost:3000"? "/api/logout":"/talodu/api/logout"}>{isAuthVal}</CustomLink>: 
+                            <CustomLink  id="loginout" to= {mylocation === "http://localhost:3000"? "/api/login":"/talodu/api/login"} >{isAuthVal}</CustomLink> }
+                        </li>
+                        </ul>
+
+            </div>
+                  
+        
+
+
+
+
+        <button onClick={()=>setShowLinks(!showLinks)}><Reorder/></button>
+
+
+
+            </div>
+
+            <div className="rightSide">
+
+                <input type="text" placeholder="search..."/>
+                <button><Search/></button>
+
+            </div>
+
+        </div>
+
+
+        </div>
+
+
+        
     );
 }
 

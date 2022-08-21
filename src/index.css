@@ -60,7 +60,6 @@ body {
 
   width: 65%;
   border: 6px solid orange;
-  flex: 0 0 30rem;
 }
 
 .logincontainer {
@@ -74,7 +73,6 @@ body {
 
   width: 65%;
   border: 6px solid rgb(189, 172, 172);
-  flex: 0 0 30rem;
 
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
@@ -113,7 +111,7 @@ align-items: center;
   flex: 0 0 10em;
   */
   display: flex;
-  width: 70%;
+
   border: 1px solid red;
   flex-direction: column;
 }
@@ -159,8 +157,9 @@ a,
 a:visited {
   color: #fff;
 }
-
+/*
 input[type="text"],
+*/
 input[type="password"],
 button,
 textarea {
@@ -222,4 +221,33 @@ button {
 
 .line {
   display: inline-block;
+}
+
+@media only screen and (max-width: 1200px) {
+  .leftSide button {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  /* if the screen size is above 850px, the loging form size is fixed */
+  .logincontainer {
+    flex: 0 0 30rem;
+  }
+
+  .container {
+    flex: 0 0 30rem;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+}
+
+@media only screen and (max-width: 750px) {
+}
+
+@media only screen and (max-width: 650px) {
+  .navBar .leftSide button {
+    display: flex;
+  }
 }

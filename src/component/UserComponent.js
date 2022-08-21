@@ -4,6 +4,8 @@ import HomeComponent from "./HomeComponent";
 import Register from "../Register";
 import Login from "./Login";
 import AddUser from "./AddUserComponent";
+import UploadFile from "./UploadFile";
+
 
 
 class UserComponent extends React.Component {
@@ -41,9 +43,13 @@ class UserComponent extends React.Component {
             <div className="parentdiv"> 
 
 
+
+<UploadFile/>
         
 
                 <div className="container">
+
+                    
 
                         <h1 className="text-center">List of users</h1>
                 

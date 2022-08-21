@@ -41,6 +41,9 @@ const LOCAL_DELETE_USERS_API_URL = "http://localhost:8086/api/deleteusers";
 const LOGOUT_API_URL = "http://51.68.196.188:8080/talodu/api/logout";
 const LOCAL_LOGOUT_API_URL = "http://localhost:8086/api/logout";
 
+const LOCAL_FILE_UPLOAD_URL = "http://localhost:8086/api/uploadfile";
+const FILE_UPLOAD_URL = "http://51.68.196.188:8080/talodu/api/uploadfile";
+
 
 
 
@@ -86,6 +89,50 @@ class UserService {
 
         }
     }
+
+
+    uploadFile(data) {
+        if(mylocation === "http://localhost:3000") {
+        
+            return axios.post(LOCAL_FILE_UPLOAD_URL, data
+            );
+            
+
+        } else {
+            
+            return axios.post(FILE_UPLOAD_URL, data);
+
+        }
+
+    }
+
+
+    registerUser(data) {
+        if(mylocation === "http://localhost:3000") {
+        
+            return axios.post(LOCAL_REGISTER_API_URL, data,
+                {
+                     headers: { 'Content-Type': 'application/json'}
+             
+               }
+            );
+            
+
+        } else {
+            
+            return axios.post(REGISTER_API_URL, data,
+                {
+                     headers: { 'Content-Type': 'application/json'}
+             
+               });
+
+        }
+
+    }
+
+
+
+
 
 
     registerUser(data) {

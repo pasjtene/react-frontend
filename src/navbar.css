@@ -26,14 +26,46 @@ body {
 }
 
 .nav {
+  /*
   background-color: #333;
+  gap: 2rem;
+  padding: 0 1rem;
+  */
+  background-color: #021e39;
+  font-family: Arial, Helvetica, sans-serif;
+
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  gap: 2rem;
-  padding: 0 1rem;
+
   width: 100%;
+}
+
+.navBar {
+  background-color: #021e39;
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: white;
+  display: flex;
+  height: 80px;
+}
+
+.navBar ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navBar a {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
 }
 
 .nav ul {
@@ -42,6 +74,45 @@ body {
   list-style: none;
   display: flex;
   gap: 1rem;
+}
+
+.navBar .leftSide {
+  width: 50%;
+  justify-content: left;
+  align-items: center;
+}
+
+.navBar .rightSide {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding-right: 25px;
+}
+
+.rightSide input {
+  height: 30px;
+
+  border: none;
+  font-size: 20px;
+  padding-left: 15 px;
+  color: black;
+}
+
+.rightSide button {
+  display: flex;
+  font-size: 13px;
+  align-items: center;
+  height: 30px;
+}
+
+.leftSide button {
+  display: none;
+}
+
+.leftSide .Links {
+  display: none;
 }
 
 .nav a {
@@ -65,4 +136,40 @@ body {
 .nav li.active {
   background-color: #555;
   color: white;
+}
+
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 850px) {
+}
+
+@media only screen and (max-width: 750px) {
+  .navBar {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .navBar .leftSide button {
+    display: flex;
+  }
+
+  .leftSide .Links1 {
+    display: none;
+  }
+
+  .leftSide #hidden {
+    position: absolute;
+    left: 0px;
+    top: 130px;
+    height: 230px;
+    max-height: 230px;
+    width: 100%;
+    display: flex;
+    color: red;
+    flex-direction: column;
+    background-color: #021e39;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 }

@@ -92,15 +92,18 @@ class UserService {
 
 
     uploadFile(data) {
+        const instance = axios.create({
+            withCredentials: true
+          })
         if(mylocation === "http://localhost:3000") {
         
-            return axios.post(LOCAL_FILE_UPLOAD_URL, data
+            return instance.post(LOCAL_FILE_UPLOAD_URL, data
             );
             
 
         } else {
             
-            return axios.post(FILE_UPLOAD_URL, data);
+            return instance.post(FILE_UPLOAD_URL, data);
 
         }
 

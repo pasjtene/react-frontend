@@ -50,14 +50,12 @@ class uploadFile extends React.Component {
 
 
        
-
+        const instance = axios.create({
+            withCredentials: true
+          });
 
         if(mylocation === "http://localhost:3000") {
 
-            const instance = axios.create({
-                withCredentials: true
-              })
-        
               instance.post(LOCAL_FILE_UPLOAD_URL, fd, {
                 onUploadProgress: e => {
                     console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%");

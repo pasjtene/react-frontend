@@ -45,13 +45,25 @@ class uploadFile extends React.Component {
         //fd.append("File", selectedFile, selectedFile.name);
 
         console.log("The fd is..",fd);
-        UserService.uploadFile(fd).then(res => {
-            console.log(res);
-        });
+
+        try {
+                const response = await UserService.uploadFile(fd).then(res => {
+                    console.log(response);
+                });
+
+        } catch (err) {
+
+            console.log(err);
+
+
+        }
+
+
+        /*
 
 
 
-       
+
         const instance = axios.create({
             withCredentials: true
           });
@@ -98,12 +110,14 @@ class uploadFile extends React.Component {
 
             }
 
-            
-
         }
 
 
 
+
+        */
+
+    
 
     }
 

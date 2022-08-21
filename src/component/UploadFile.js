@@ -8,6 +8,8 @@ const mylocation = window.location.origin;
 const LOCAL_FILE_UPLOAD_URL = "http://localhost:8086/api/uploadfile";
 const FILE_UPLOAD_URL = "http://51.68.196.188:8080/talodu/api/uploadfile";
 
+axios.defaults.withCredentials = true;
+
 class uploadFile extends React.Component {
    // const uploadFile = () => {
 
@@ -56,7 +58,7 @@ class uploadFile extends React.Component {
 
         if(mylocation === "http://localhost:3000") {
 
-              instance.post(LOCAL_FILE_UPLOAD_URL, fd, {
+            axios.post(LOCAL_FILE_UPLOAD_URL, fd, {
                 onUploadProgress: e => {
                     console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%");
                     //this.setState({progress: Math.round ((e.loaded / e.total)*100) });
@@ -74,7 +76,7 @@ class uploadFile extends React.Component {
 
                 
             
-               const resp = await   instance.post(FILE_UPLOAD_URL, fd, {
+               const resp = await   axios.post(FILE_UPLOAD_URL, fd, { headers: {  Authorization: true}, withCredentials: true }, {
                 onUploadProgress: e => {
                     console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%")
                     //this.setState({progress: Math.round ((e.loaded / e.total)*100) });

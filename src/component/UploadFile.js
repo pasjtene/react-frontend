@@ -8,7 +8,7 @@ const mylocation = window.location.origin;
 const LOCAL_FILE_UPLOAD_URL = "http://localhost:8086/api/uploadfile";
 const FILE_UPLOAD_URL = "http://51.68.196.188:8080/talodu/api/uploadfile";
 
-//axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 class uploadFile extends React.Component {
    // const uploadFile = () => {
@@ -46,6 +46,9 @@ class uploadFile extends React.Component {
 
         console.log("The fd is..",fd);
 
+ /*
+
+
         try {
                 const response = await UserService.uploadFile(fd).then(res => {
                     console.log(response);
@@ -59,10 +62,9 @@ class uploadFile extends React.Component {
         }
 
 
-        /*
+       
 
-
-
+*/
 
         const instance = axios.create({
             withCredentials: true
@@ -115,7 +117,7 @@ class uploadFile extends React.Component {
 
 
 
-        */
+        
 
     
 

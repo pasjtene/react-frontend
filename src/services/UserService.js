@@ -95,6 +95,7 @@ class UserService {
         const instance = axios.create({
             withCredentials: true
           })
+
         if(mylocation === "http://localhost:3000") {
         
             return instance.post(LOCAL_FILE_UPLOAD_URL, data
@@ -189,14 +190,14 @@ class UserService {
         if(mylocation === "http://localhost:3000") {
             console.log("We are on the client, the cookie is....",userCookie);
             return instance.post(LOCAL_DELETE_USERS_API_URL, data, 
-                { headers: { 'Content-Type': 'application/json', Authorization: userCookie}, withCredentials: true } 
+                { headers: {  Authorization: true}, withCredentials: true } 
                 );
         } else {
 
             console.log("We are on the server, the cookie is....",userCookie);
             
             return instance.post(DELETE_USERS_API_URL, data, 
-                { headers: { 'Content-Type': 'application/json', Authorization: userCookie}, withCredentials: true } 
+                { headers: {  Authorization: true}, withCredentials: true } 
                 );
         }
 

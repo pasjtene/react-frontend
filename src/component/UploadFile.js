@@ -23,8 +23,6 @@ class uploadFile extends React.Component {
             
         }
 
-
-    
     
     updateProgress(c) {
         // Note: this will *not* work as intended.
@@ -45,16 +43,22 @@ class uploadFile extends React.Component {
         //fd.append("File", selectedFile, selectedFile.name);
 
         console.log("The fd is..",fd);
-        UserService.uploadFile(fd).then(res => {
-            console.log(res);
-        });
+        //UserService.uploadFile(fd).then(res => {
+          //  console.log(res);
+        //});
+
+
 
        
 
 
         if(mylocation === "http://localhost:3000") {
+
+            const instance = axios.create({
+                withCredentials: true
+              })
         
-             axios.post(LOCAL_FILE_UPLOAD_URL, fd, {
+              instance.post(LOCAL_FILE_UPLOAD_URL, fd, {
                 onUploadProgress: e => {
                     console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%");
                     //this.setState({progress: Math.round ((e.loaded / e.total)*100) });
@@ -67,7 +71,7 @@ class uploadFile extends React.Component {
 
         } else {
             
-             axios.post(FILE_UPLOAD_URL, fd, {
+            instance.post(FILE_UPLOAD_URL, fd, {
                 onUploadProgress: e => {
                     console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%")
                     //this.setState({progress: Math.round ((e.loaded / e.total)*100) });

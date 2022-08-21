@@ -198,6 +198,11 @@ class UserService {
             
             return instance.post(DELETE_USERS_API_URL, data, 
                 { headers: {  Authorization: true}, withCredentials: true } 
+                ).then(resp => {
+                    console.log("The response");
+                    console.log(resp);
+                }
+
                 );
         }
 

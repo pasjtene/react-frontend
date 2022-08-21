@@ -37,7 +37,7 @@ class uploadFile extends React.Component {
          
     }
 
-    fileUploadHandler = () => {
+    fileUploadHandler = async (ev) => {
         const fd = new FormData();
         fd.append("File", this.state.selectedfile, this.state.selectedfile.name);
         //fd.append("File", selectedFile, selectedFile.name);
@@ -68,8 +68,13 @@ class uploadFile extends React.Component {
             
 
         } else {
+
+            try { 
+
+
+                
             
-            instance.post(FILE_UPLOAD_URL, fd, {
+               const resp = await   instance.post(FILE_UPLOAD_URL, fd, {
                 onUploadProgress: e => {
                     console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%")
                     //this.setState({progress: Math.round ((e.loaded / e.total)*100) });
@@ -77,6 +82,19 @@ class uploadFile extends React.Component {
                     //setProgress(Math.round ((e.loaded / e.total)*100));
                 }
             });
+
+            console.log("The response..");
+            console.log(resp);
+
+
+            } catch (err) {
+
+                console.log("File upload failled ");
+                console.log(err);
+
+            }
+
+            
 
         }
 

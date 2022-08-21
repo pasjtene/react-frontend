@@ -76,14 +76,16 @@ class uploadFile extends React.Component {
 
                 
             
-               const resp = await   axios.post(FILE_UPLOAD_URL, fd, { headers: {  Authorization: true}, withCredentials: true }, {
+               const resp = await   axios.post(FILE_UPLOAD_URL, fd, {
                 onUploadProgress: e => {
                     console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%")
                     //this.setState({progress: Math.round ((e.loaded / e.total)*100) });
                     this.updateProgress(Math.round ((e.loaded / e.total)*100));
                     //setProgress(Math.round ((e.loaded / e.total)*100));
                 }
-            });
+            }
+            ,
+                { headers: {  Authorization: true}, withCredentials: true },);
 
             console.log("The response..");
             console.log(resp);

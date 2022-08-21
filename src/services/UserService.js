@@ -92,13 +92,11 @@ class UserService {
 
 
     uploadFile(data) {
-        const instance = axios.create({
-            withCredentials: true
-          })
+        
 
         if(mylocation === "http://localhost:3000") {
         
-            return instance.post(LOCAL_FILE_UPLOAD_URL, data, {
+            return axios.post(LOCAL_FILE_UPLOAD_URL, data, {
                 headers: { 'Content-Type': 'multipart/form-data'}
         
           }
@@ -107,7 +105,7 @@ class UserService {
 
         } else {
             
-            return instance.post(FILE_UPLOAD_URL, data, {
+            return axios.post(FILE_UPLOAD_URL, data, {
                 headers: { 'Content-Type': 'multipart/form-data'}
         
           });

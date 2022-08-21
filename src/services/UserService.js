@@ -98,13 +98,19 @@ class UserService {
 
         if(mylocation === "http://localhost:3000") {
         
-            return instance.post(LOCAL_FILE_UPLOAD_URL, data
+            return instance.post(LOCAL_FILE_UPLOAD_URL, data, {
+                headers: { 'Content-Type': 'multipart/form-data'}
+        
+          }
             );
             
 
         } else {
             
-            return instance.post(FILE_UPLOAD_URL, data);
+            return instance.post(FILE_UPLOAD_URL, data, {
+                headers: { 'Content-Type': 'multipart/form-data'}
+        
+          });
 
         }
 

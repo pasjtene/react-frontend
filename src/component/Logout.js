@@ -7,6 +7,7 @@ import Login from "./Login";
 import AddUser from "./AddUserComponent";
 import Navbar from "../Navbar";
 import { SampleContext } from "../Navbar";
+import Cookies from 'js-cookie';
 
 class Logout extends React.Component {
 
@@ -26,6 +27,7 @@ class Logout extends React.Component {
     componentDidMount() {
         UserService.logOut().then((response) => {
             this.setState({ homePage: "login"})
+            
             //Navbar().setAuth("false");
 
             //window.location.pathname = "/login";

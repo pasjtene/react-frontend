@@ -78,6 +78,7 @@ class UserService {
 
     logOut () {
         console.log("The current location...", window.location.origin);
+        Cookies.set('isUserAuth',"false");
         if(mylocation === "http://localhost:3000") {
             console.log("Yes, we are local");
             return axios.get(LOCAL_LOGOUT_API_URL);

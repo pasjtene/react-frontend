@@ -85,33 +85,24 @@ class uploadFile extends React.Component {
 
         } else {
 
-            /*
+           
 
             try { 
-
-
-                
-            
-               const resp = await   
-               
-               */
-               
-               
-               axios.post(FILE_UPLOAD_URL, fd, {
-                onUploadProgress: e => {
-                    console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%")
-                    //this.setState({progress: Math.round ((e.loaded / e.total)*100) });
-                    this.updateProgress(Math.round ((e.loaded / e.total)*100));
-                    //setProgress(Math.round ((e.loaded / e.total)*100));
+                const resp = await     axios.post(FILE_UPLOAD_URL, fd, {
+                    onUploadProgress: e => {
+                        console.log("loaded progress " +  Math.round ((e.loaded / e.total)*100) + "%")
+                        //this.setState({progress: Math.round ((e.loaded / e.total)*100) });
+                        this.updateProgress(Math.round ((e.loaded / e.total)*100));
+                        //setProgress(Math.round ((e.loaded / e.total)*100));
+                    }
                 }
-            }
+
             );
 
             console.log("The response..");
-            //console.log(resp);
+            console.log(resp);
 
-            /*
-
+            
 
             } catch (err) {
 
@@ -120,17 +111,8 @@ class uploadFile extends React.Component {
 
             }
 
-*/
-
-
         }
 
-
-
-
-        
-
-    
 
     }
 

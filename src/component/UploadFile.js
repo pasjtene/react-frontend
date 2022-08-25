@@ -241,7 +241,7 @@ render () {
 
 
                       
-                <img src= {  require("../img/Photo-ID-2.jpg")} />
+                <img className="imgthumbnail"  src= {  require("../img/Photo-ID-2.jpg")} />
             </div>
 
             

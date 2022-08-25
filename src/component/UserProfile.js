@@ -88,6 +88,12 @@ class UserProfile extends React.Component {
                             <tbody>
                                 {
                                     this.state.users.map(user => <tr key = {user.id}>
+                                        <td>
+                                        
+                                        
+                                        <img className="imgthumbnail" src={window.location.origin + ':8080/images/'+  user.profileImagePath} />
+                                       
+                                        </td>
                                         <td>{user.id}</td>
                                         <td>{user.firstName}</td>
                                         <td>{user.lastName}</td>
@@ -95,12 +101,7 @@ class UserProfile extends React.Component {
                                         <td className="userpass">{user.password}</td>
                                         <td>{user.username}</td>
                                         <td>{user.roles}</td>
-                                        <td>
                                         
-                                        
-                                        <img src={process.env.PUBLIC_URL + user.profileImagePath} />
-                                        <img src={window.location.origin + '../img/'+ user.profileImagePath} />
-                                        </td>
                                         
                                     </tr>)
                                 }

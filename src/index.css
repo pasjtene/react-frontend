@@ -50,6 +50,10 @@ body {
   flex-wrap: wrap;
 }
 
+.imgthumbnail {
+  width: 50px;
+}
+
 .container {
   display: flex;
   flex-direction: column;

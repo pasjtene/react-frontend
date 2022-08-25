@@ -67,6 +67,7 @@ class UserProfile extends React.Component {
 
                 <div className="container">
 
+                <img src={window.location.origin + '/images/'+ JSON.parse(Cookies.get("user")).profileImagePath} />
                     
 
                         <h1 className="text-center">List of users</h1>

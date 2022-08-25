@@ -13,6 +13,7 @@ import {  AuthContext } from "../Navbar";
 import Navbar from "../Navbar";
 import uploadFile from "./UploadFile";
 import { UploadFile } from "@mui/icons-material";
+import Cookies from 'js-cookie';
 
 
 const AUTH_URL = "http://localhost:8085/api/authenticate";
@@ -53,6 +54,14 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
                 const response = await UserService.authenticate(JSON.stringify(data));
                 
                 console.log("Received auth data", response?.data);
+
+                if(response.data) {
+                    console.log ("The auth response..");
+                    console.log(response.data);
+                    Cookies.set("firstName", response.data.firstName);
+                    Cookies.set("user",   JSON.stringify(response.data));
+
+                }
                 //window.location.reload(false);
 
                // setAuth("true");

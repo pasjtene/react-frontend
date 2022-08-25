@@ -103,7 +103,7 @@ const handleSelectedUser = (id, userSected) => {
         selectedUsers.push(id);
 
         setNusersToDelete(selectedUsers.length);
-        console.log(Object.assign({}, selectedUsers));
+        //console.log(Object.assign({}, selectedUsers));
 
         //console.log("The array0 : ", array);
         //array.push(id);
@@ -138,16 +138,16 @@ function isValidJson(json) {
 
 const handleDeleteUsers  = async (e, selectedUsers) => {  
 
-//const handleDeleteUsers = (selectedUsers) => {
-console.log(e);
-e.preventDefault(); 
+    //const handleDeleteUsers = (selectedUsers) => {
+    console.log(e);
+    e.preventDefault(); 
 
-const userc = Cookies.get('user-id');
-const userCookie = Cookies.get('user-id');
-setUserCookie(userc);
-console.log("The user cookie..", userc);
+    const userc = Cookies.get('user-id');
+    const userCookie = Cookies.get('user-id');
+    setUserCookie(userc);
+    console.log("The user cookie..", userc);
 
-console.log("The user cookie 2....",userCookie);
+    console.log("The user cookie 2....",userCookie);
 
     const utodel = selectedUsers.map((e)=>e+",");
 
@@ -197,13 +197,7 @@ console.log("The user cookie 2....",userCookie);
     } catch (err) {
         console.log(err);
     }
-        //UserService.deleteUsersCSV(selectedUsers).then((response)=>{
-
-        //console.log("The reponse from server: ",response);
-   // });
-
-
-    //remove the users from the array of users.
+       
     selectedUsers.map(id=>{
         removeById(users, id);
         setUserAdded("yes"+id);

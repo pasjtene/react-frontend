@@ -10,6 +10,7 @@ import Navbar from './Navbar';
 import AddUser from './component/AddUserComponent';
 import Logout from './component/Logout';
 import { useRef, useEffect } from 'react';
+import UserProfile from './component/UserProfile';
 
 const mylocation = window.location.origin;
 
@@ -55,6 +56,8 @@ function App() {
                   <Route path="/user/add" element={<AddUser/>} />
                   <Route path="/api/logout" element={<Logout/>} />
                   <Route path="/talodu/api/logout" element={<Logout/>} />
+                  <Route path="/talodu/api/profile" element={<UserProfile/>} />
+                  <Route path="/api/profile" element={<UserProfile/>} />
                   
                 </Routes>
 

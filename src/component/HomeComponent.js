@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Register from "../Register";
 import Login from "./Login";
 import UserComponent from "./UserComponent";
@@ -8,13 +8,33 @@ import AddUser from "./AddUserComponent";
 import UserService from "../services/UserService";
 import NavBarComponent from "./NavBarComponent";
 import Navbar from "../Navbar";
+import Cookies from 'js-cookie';
+
+
 
 
 
 
     const HomeComponent = () => {
         const [homePage, setHomePage] = useState("");
+        const [userFN, setFN] = useState("Guest");
+        const [userLN, setLN] = useState("");
+        const authUser = JSON.parse(Cookies.get("user"));
+        
+        
+
+
+        useEffect(()=>{
+            console.log("The number of users to delete: ", userFN);
+            setFN(authUser.firstName);
+            setLN(authUser.lastName);
+        },[userFN])
+
+
         console.log("Is user auth ?.. from home component....", UserService.getAuthCookie());
+        console.log("The user FN from home component...", Cookies.get("firstName"));
+        console.log("The user from FN2 home component...", authUser.firstName);
+        //setFN(authUser.firstName);
 
         switch (homePage) {
             case "register" : return (<div> <Register /> </div>);
@@ -24,6 +44,8 @@ import Navbar from "../Navbar";
             
 
         }
+
+       
 
 
 if(UserService.getAuthCookie()==="true") {
@@ -41,7 +63,12 @@ if(UserService.getAuthCookie()==="true") {
                                 </h6>
                                 <span className="homeLinks" onClick={()=> setHomePage("login")}> logout</span>
                             <div>
-                        Welcome to the react and spring boot full stack secure app training ... We are logged in
+                                <div>
+                                Welcome Welcome {userFN} {userLN}
+                                </div>
+                        
+
+                        to the react and spring boot full stack secure app training ... We are logged in
                 </div>
         </div>
         </div>
@@ -78,7 +105,9 @@ if(UserService.getAuthCookie()==="true") {
                     </div>
 
                     <div>
-                    Welcome to the react and spring boot full stack secure app training ... We are NOT auth
+                    
+                    
+                     to the react and spring boot full stack secure app training ... We are NOT auth
                     </div>
 
                     </div>

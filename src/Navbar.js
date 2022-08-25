@@ -160,6 +160,10 @@ export default function Navbar({ children, settings }) {
                         </li>
 
                         <li>
+                        <CustomLink to="/api/profile">My profile</CustomLink>
+                        </li>
+
+                        <li>
                             {isAuth || isUserAuth === "true" ? 
                             <CustomLink id="loginout" to={mylocation === "http://localhost:3000"? "/api/logout":"/talodu/api/logout"}>{isAuthVal}</CustomLink>: 
                             <CustomLink  id="loginout" to= {mylocation === "http://localhost:3000"? "/api/login":"/talodu/api/login"} >{isAuthVal}</CustomLink> }
@@ -186,6 +190,10 @@ export default function Navbar({ children, settings }) {
 
                         <li>
                         <CustomLink to="/register">Register</CustomLink>
+                        </li>
+
+                        <li>
+                        <CustomLink to="/api/profile">My profile</CustomLink>
                         </li>
 
                         <li>

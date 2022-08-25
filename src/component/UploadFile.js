@@ -16,6 +16,7 @@ const mylocation = window.location.origin;
 
 const LOCAL_FILE_UPLOAD_URL = "http://localhost:8086/api/uploadfile";
 const FILE_UPLOAD_URL = "http://51.68.196.188:8080/talodu/api/uploadfile";
+const IMAGE_URL = "http://51.68.196.188:8080";
 
 axios.defaults.withCredentials = true;
 
@@ -230,7 +231,7 @@ render () {
           //<img src={ image }  />;
           //<img src={process.env.PUBLIC_URL + '/img/logo.png'} />
           //<img src={process.env.PUBLIC_URL + '../img/'+ post} />
-          <img src={FILE_UPLOAD_URL +"/images/"+ post} />
+          <img src={IMAGE_URL +"/images/"+ post} />
         
 
 

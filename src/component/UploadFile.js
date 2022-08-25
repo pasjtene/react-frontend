@@ -7,8 +7,11 @@ import Cookies from 'js-cookie';
 
 
 
-
-const authUser = JSON.parse(Cookies.get("user"));
+const user = Cookies.get("user");
+if(user) {
+    const authUser = JSON.parse(Cookies.get("user"));
+}
+//const authUser = JSON.parse(Cookies.get("user"));
 const mylocation = window.location.origin;
 
 const LOCAL_FILE_UPLOAD_URL = "http://localhost:8086/api/uploadfile";

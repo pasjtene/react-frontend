@@ -8,7 +8,7 @@ import UploadFile from "./UploadFile";
 import Cookies from 'js-cookie';
 import UserComponent from "./UserComponent";
 
-
+const IMAGE_URL = "http://51.68.196.188:8080";
 
 
 
@@ -67,7 +67,7 @@ class UserProfile extends React.Component {
 
                 <div className="container">
 
-                <img src={window.location.origin + '/images/'+ JSON.parse(Cookies.get("user")).profileImagePath} />
+                <img src={window.location.origin + ':8080/images/'+ JSON.parse(Cookies.get("user")).profileImagePath} />
                     
 
                         <h1 className="text-center">List of users</h1>

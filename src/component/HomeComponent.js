@@ -19,21 +19,28 @@ import Cookies from 'js-cookie';
         const [homePage, setHomePage] = useState("");
         const [userFN, setFN] = useState("Guest");
         const [userLN, setLN] = useState("");
-        const authUser = JSON.parse(Cookies.get("user"));
+        
         
         
 
 
         useEffect(()=>{
-            console.log("The number of users to delete: ", userFN);
+            if(Cookies.get("user")) {
+                const authUser = JSON.parse(Cookies.get("user"));
+                console.log("The number of users to delete: ", userFN);
             setFN(authUser.firstName);
             setLN(authUser.lastName);
+
+            console.log("The user from FN2 home component...", authUser.firstName);
+
+            }
+            
         },[userFN])
 
 
         console.log("Is user auth ?.. from home component....", UserService.getAuthCookie());
         console.log("The user FN from home component...", Cookies.get("firstName"));
-        console.log("The user from FN2 home component...", authUser.firstName);
+       
         //setFN(authUser.firstName);
 
         switch (homePage) {

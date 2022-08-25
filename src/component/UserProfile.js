@@ -8,7 +8,7 @@ import UploadFile from "./UploadFile";
 import Cookies from 'js-cookie';
 import UserComponent from "./UserComponent";
 
-const authUser = JSON.parse(Cookies.get("user"));
+
 
 
 
@@ -26,11 +26,21 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount() {
+
+        if(Cookies.get("user")) {
+
+            const user = Cookies.get("user");
+
+            const authUser = JSON.parse(user);
+
+            UserService.getUsers().then((response) => {
+                this.setState({ users: response.data})
+                    this.setState({ profileImagePath: authUser.profileImagePath})
+               });
+
+        }
        
-       UserService.getUsers().then((response) => {
-        this.setState({ users: response.data})
-            this.setState({ profileImagePath: authUser.profileImagePath})
-       });
+       
     }
 
     

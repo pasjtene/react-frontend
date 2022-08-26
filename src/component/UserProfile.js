@@ -10,6 +10,8 @@ import UserComponent from "./UserComponent";
 
 const IMAGE_URL = "http://51.68.196.188:8080";
 
+const mylocation = window.location.origin;
+
 
 
 class UserProfile extends React.Component {
@@ -76,11 +78,12 @@ class UserProfile extends React.Component {
                         <table className="table table-striped">
                             <thead>
                                 <tr>
-                                    <td>User Id</td>
-                                    <td>User First name</td>
-                                    <td>User last Name</td>
-                                    <td>User email</td>
-                                    <td>User passwd</td>
+                                    <td>pic</td>
+                                    <td>Id</td>
+                                    <td>First name</td>
+                                    <td>last Name</td>
+                                    <td>email</td>
+                                    
                                     <td>User username</td>
                                     <td>Roles</td>
                                 </tr>
@@ -93,12 +96,13 @@ class UserProfile extends React.Component {
                                         
                                         <img className="imgthumbnail" src={window.location.origin + ':8080/images/'+  user.profileImagePath} />
                                        
+                                        <img className="imgthumbnail" src={window.location.origin + '/'+ "logo192.png"} />
                                         </td>
                                         <td>{user.id}</td>
                                         <td>{user.firstName}</td>
                                         <td>{user.lastName}</td>
                                         <td>{user.email}</td>
-                                        <td className="userpass">{user.password}</td>
+                                        
                                         <td>{user.username}</td>
                                         <td>{user.roles}</td>
                                         

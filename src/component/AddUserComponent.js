@@ -143,11 +143,12 @@ const handleDeleteUsers  = async (e, selectedUsers) => {
     e.preventDefault(); 
 
     const userc = Cookies.get('user-id');
-    const userCookie = Cookies.get('user-id');
+    //const userCookie = Cookies.get('user-id');
     setUserCookie(userc);
-    console.log("The user cookie..", userc);
 
-    console.log("The user cookie 2....",userCookie);
+    //console.log("The user cookie..", userc);
+
+    //console.log("The user cookie 2....",userCookie);
 
     const utodel = selectedUsers.map((e)=>e+",");
 
@@ -156,22 +157,22 @@ const handleDeleteUsers  = async (e, selectedUsers) => {
 
     getUsersCSV(...selectedUsers.map((userid)=>userid.trim()+","));
 
-    axios.defaults.withCredentials = true;
+    //axios.defaults.withCredentials = true;
     const susers = {Selusers: selectedUsers.toString()};
     setUsersToDelete(selectedUsers.toString());
 
     setDataToDel({users:selectedUsers.toString()});
 
-    console.log("Valide json....");
-    console.log(isValidJson(susers));
+    //console.log("Valide json....");
+    //console.log(isValidJson(susers));
 
-    console.log("Valide json....2");
-    console.log(isValidJson(JSON.stringify(susers)));
+    //console.log("Valide json....2");
+    //console.log(isValidJson(JSON.stringify(susers)));
 
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'JWT fefege...'
-      };
+    //const headers = { 'Content-Type': 'application/json', 'Authorization': 'JWT fefege...'  };
+        
+        
+     
 
       //const DELETE_USERS_REST_API_URL = "http://localhost:8085/api/deleteusers";
 
@@ -179,14 +180,15 @@ const handleDeleteUsers  = async (e, selectedUsers) => {
 
       try {
 
-        const response = await UserService.deleteUsersCSV(JSON.parse(JSON.stringify(selectedUsers), userCookie) );
+        const response = await UserService.deleteUsersCSV(JSON.parse(JSON.stringify(selectedUsers)) );
             
             
         console.log(response?.data);
         if(response?.data.id !=0 ) {
             users.push(response?.data);
-            //users.push(data);
-            setUserAdded(data.email);
+            setData(response.data);
+            console.log("The data email", data[0].email);
+            setUserAdded(data[0].email);
             
         } else {
             console.log("Le email est pris: ", response?.data.email);

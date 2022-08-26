@@ -191,29 +191,31 @@ class UserService {
 
 
 
-    deleteUsersCSV(data, userCookie) {
+    deleteUsersCSV(data) {
         const instance = axios.create({
             withCredentials: true
           })
         console.log("The datum..",data);
 
         if(mylocation === "http://localhost:3000") {
-            console.log("We are on the client, the cookie is....",userCookie);
-            return instance.post(LOCAL_DELETE_USERS_API_URL, data, 
+            console.log("We are on the client, the cookie is....");
+            return axios.post(LOCAL_DELETE_USERS_API_URL, data, 
                 { headers: {  Authorization: true}, withCredentials: true } 
                 );
         } else {
 
-            console.log("We are on the server, the cookie is....",userCookie);
+            console.log("We are on the server, the cookie is....");
             
-            return instance.post(DELETE_USERS_API_URL, data, 
+            return axios.post(DELETE_USERS_API_URL, data, 
                 { headers: {  Authorization: true}, withCredentials: true } 
-                ).then(resp => {
-                    console.log("The response");
-                    console.log(resp);
-                }
-
                 );
+                
+                //.then(resp => {
+                    //console.log("The response");
+                    //console.log(resp);
+               // });
+
+                
         }
 
         

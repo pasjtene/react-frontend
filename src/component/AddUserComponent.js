@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie';
 import HomeComponent from "./HomeComponent";
 import Navbar from "../Navbar";
+import AppService from "../services/AppService";
 
 
 axios.defaults.withCredentials = true;
@@ -24,8 +25,6 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%/:,."']).{8,24}$
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const REGISTER_URL = "/api/register";
 
-
-//let API_URL = "http://localhost:8085/api/register ";
 
 
 const AddUser = () => {
@@ -52,10 +51,21 @@ const AddUser = () => {
    const [userCookie, setUserCookie] = useState("");
 
    useEffect(()=>{
+    console.log("The user roles...in add user..",UserService.hasRole("ROLE_SUPER_ADMIN"));
+
+
     UserService.getUsers().then(response => {
         console.log("The response in userEffect", response.data);
         setUsers(response.data);
         setData(response.data);
+    }).catch((error)=>{
+        //console.log("Error getting users...",e)
+        if (error.response) {
+            
+            console.log("Error getting users...status..", error.response.status);
+            //console.log("Error getting users...headers...", error.response.headers);
+            console.log("Error getting users...data...", error.response.data);
+          }
     });
     //setUserAdded(true)
 
@@ -133,6 +143,13 @@ function isValidJson(json) {
     }
 }
 
+function returnn(){
+    console.log("The users is empty")
+
+    return false;
+
+}   
+
 
 
 
@@ -145,10 +162,6 @@ const handleDeleteUsers  = async (e, selectedUsers) => {
     const userc = Cookies.get('user-id');
     //const userCookie = Cookies.get('user-id');
     setUserCookie(userc);
-
-    //console.log("The user cookie..", userc);
-
-    //console.log("The user cookie 2....",userCookie);
 
     const utodel = selectedUsers.map((e)=>e+",");
 
@@ -163,17 +176,8 @@ const handleDeleteUsers  = async (e, selectedUsers) => {
 
     setDataToDel({users:selectedUsers.toString()});
 
-    //console.log("Valide json....");
-    //console.log(isValidJson(susers));
-
-    //console.log("Valide json....2");
-    //console.log(isValidJson(JSON.stringify(susers)));
-
-    //const headers = { 'Content-Type': 'application/json', 'Authorization': 'JWT fefege...'  };
         
         
-     
-
       //const DELETE_USERS_REST_API_URL = "http://localhost:8085/api/deleteusers";
 
 
@@ -279,10 +283,12 @@ const removeById = (arr, id) => {
 
 
 //const handleSubmit = async (e) => {
+   
 const onSubmit = async (data,e) => {  
     e.preventDefault();
     console.log("The data: ", data);
 
+     /*
     if(mylocation === "http://localhost:3000") {
     console.log("Yes, we are local");
     setRegisterUrl("http://localhost:8086/api/register");
@@ -296,12 +302,13 @@ const onSubmit = async (data,e) => {
 
 }
 
+*/
 
     
 
 try {
     //const response = await axios.post(API_URL, JSON.stringify({firstName, lastName, email, password}),
-    const response = await axios.post(api_url, JSON.stringify(data),
+    const response = await axios.post(AppService.app_url("/api/user/save"), JSON.stringify(data),
     {
         headers: { 'Content-Type': 'application/json'}
 
@@ -340,6 +347,16 @@ switch(homePage) {
     case "adduser": return ( <AddUser/>);
 
     
+}
+
+if(data.length === 0 ) {
+    return (
+        <div>
+                <h1>No data!</h1>
+                
+                <UserComponent/>
+            </div>
+    )
 }
 
     return (
@@ -440,7 +457,8 @@ switch(homePage) {
                                     </thead>
                                     <tbody>
                                         {
-                                            [...data].reverse().map(user => <tr key = {user.email}>
+                                        
+                                            data.length?[...data].reverse().map(user => <tr key = {user.email}>
                                                 <td>{user.id}</td>
                                                 <td>{user.firstName}</td>
                                                 <td>{user.lastName}</td>
@@ -455,7 +473,7 @@ switch(homePage) {
                                                     setBoxChecked(e.target.checked);
                                                     //setUserAdded("yes");
                                                     }}/></td>
-                                            </tr>)
+                                            </tr>) : console.log("No data")
                                         }
                                         </tbody>
                                     </table>

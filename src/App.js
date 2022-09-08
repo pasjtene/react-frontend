@@ -12,9 +12,12 @@ import Logout from './component/Logout';
 import { useRef, useEffect } from 'react';
 import UserProfile from './component/UserProfile';
 
+
 const mylocation = window.location.origin;
 
+
 function App() {
+  const [app_url, setApiUrl] = useState("");
 
   console.log(window.location);
   const ref = useRef(null);

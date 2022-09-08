@@ -144,10 +144,13 @@ export default function Navbar({ children, settings }) {
 
         <ul className="Links1" >
             
-
-            <li>
+                        {
+                        UserService.hasRole("ROLE_SUPER_ADMIN")?
+                         <li>
                             <CustomLink to="/user/add">Add user</CustomLink>
                         </li>
+                        : ""
+                         }
                         
                         <li>
                             <CustomLink to="/users/list">Liste Users</CustomLink>
@@ -186,8 +189,7 @@ export default function Navbar({ children, settings }) {
                             <CustomLink to="/users/list">Liste Users</CustomLink>
                         </li>
                      
-                       
-
+                    
                         <li>
                         <CustomLink to="/register">Register</CustomLink>
                         </li>

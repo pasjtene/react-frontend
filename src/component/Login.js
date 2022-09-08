@@ -10,9 +10,7 @@ import HomeComponent from "./HomeComponent";
 import { ReactDOM } from "react";
 
 import {  AuthContext } from "../Navbar";
-import Navbar from "../Navbar";
-import uploadFile from "./UploadFile";
-import { UploadFile } from "@mui/icons-material";
+
 import Cookies from 'js-cookie';
 
 
@@ -60,6 +58,10 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
                     console.log(response.data);
                     Cookies.set("firstName", response.data.firstName);
                     Cookies.set("user",   JSON.stringify(response.data));
+                    Cookies.set("userRoles",   JSON.stringify(response.data.roles));
+
+                    console.log("The user roles: ",JSON.stringify(response.data.roles))
+
 
                 }
                 //window.location.reload(false);
@@ -87,7 +89,7 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
         
             <div className="parentdiv"> 
               
-              <UploadFile/>
+             
 
             <div className="logincontainer">
             <div className="firstNav">

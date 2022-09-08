@@ -67,7 +67,7 @@ class UserService {
 
 
     hasRole(role) {
-        const roles = JSON.parse(Cookies.get('userRoles'));
+        const roles = JSON.parse(Cookies.get('userRoles')?Cookies.get('userRoles'):false);
 
         if(roles) {
             for (var i = 0; i < roles.length; i++) {

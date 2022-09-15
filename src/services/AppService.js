@@ -1,5 +1,6 @@
 
 
+import { useUser } from "../component/user/UserContext";
 const mylocation = window.location.origin;
 const SERVER_API_URL = 'http://51.68.196.188:8080/talodu';
 const LOCAL_API_URL = 'http://localhost:8086';
@@ -21,6 +22,10 @@ class AppService {
         }
     
     }
+
+
+
+
 
 }
 

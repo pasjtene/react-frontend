@@ -54,7 +54,7 @@ class Logout extends React.Component {
          return (
              
             <div>
-                <Login/>
+                <Login logincontext="log-out"/>
                  
             
                 <h1 className="text-center">This is the logout page</h1>

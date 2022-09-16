@@ -1,13 +1,14 @@
+
 import React from "react";
-import UserService from "../services/UserService";
-import HomeComponent from "./HomeComponent";
-import Register from "../Register";
-import Login from "./Login";
-import AddUser from "./AddUserComponent";
-import UploadFile from "./UploadFile";
-import Cookies from 'js-cookie';
-import UserComponent from "./UserComponent";
-import { useUser, useUserUpdate} from "./user/UserContext";
+//import UserService from "../services/UserService";
+//import HomeComponent from "./HomeComponent";
+//import Register from "../Register";
+//import Login from "./Login";
+//import AddUser from "./AddUserComponent";
+import UploadFile from "../UploadFile";
+//import Cookies from 'js-cookie';
+//import UserComponent from "./UserComponent";
+//import { useUser, useUserUpdate} from "./user/UserContext";
 //import { UserContext } from "./Login";
 //import { useUser, useUserUpdate} from "./user/UserContext";
 
@@ -17,7 +18,7 @@ const mylocation = window.location.origin;
 
 
 
-class UserProfile extends React.Component {
+class UserDetails extends React.Component {
    // const authUser = JSON.parse(Cookies.get("user"));
    //static contextType = UserContext;
    
@@ -35,26 +36,11 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount() {
-       // const user = this.context;
-       //const user = useUser();
-        //const updateUser = useUserUpdate();
-        //console.log("THe user 123 is: ", user);
-        
-        
-
-        if(Cookies.get("user")) {
-
-            const user = Cookies.get("user");
-
-            const authUser = JSON.parse(user);
-            this.setState({user: authUser});
-
-        } else {
-            //this.setState({homePage: "login"});
-            console.log("The user cookie was removed...");
-        }
        
-       
+        
+        console.log("The user cookie was removed...");
+
+     
     }
 
     
@@ -63,10 +49,10 @@ class UserProfile extends React.Component {
         
         
         switch (this.state.homePage) {
-            case "register" : return (<div> <Register /> </div>);
-            case "login": return (<div> <Login/> </div>);
-            case "userlist": return (<div> <UserComponent/> </div>);
-            case "adduser": return (<div> <AddUser/> </div>);
+            //case "register" : return (<div> <Register /> </div>);
+            //case "login": return (<div> <Login/> </div>);
+            //case "userlist": return (<div> <UserComponent/> </div>);
+            //case "adduser": return (<div> <AddUser/> </div>);
         
         }
 
@@ -88,7 +74,7 @@ class UserProfile extends React.Component {
                 <img src={window.location.origin + ':8080/images/'+ this.props.user.profileImagePath} />
                     
 
-                        <h1 className="text-center">List of users..12</h1>
+                        <h1 className="text-center">User details for ..1 {this.props.user.firstName}</h1>
                         
                 
                         <table className="table table-striped">
@@ -142,4 +128,11 @@ class UserProfile extends React.Component {
 
 }
 
-export default UserProfile;
+
+//const UserDetails = (props) {}
+
+
+
+
+
+export default UserDetails

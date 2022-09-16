@@ -17,9 +17,6 @@ const UserContext = React.createContext({
     return useContext(UserContextUpdate)
   }
 
-
-
-
   export function UserProvider({children}) {
     const [user, setUser] = useState({})
 

@@ -23,30 +23,42 @@ import UserProfile from "./UserProfile";
     const HomeComponent = (props) => {
         const [homePage, setHomePage] = useState("");
         const [userFN, setFN] = useState("Guest");
-        //const [userLN, setLN] = useState("");
+        const [user, setUser] = useState("");
         //const user = useUser();
-        const user = useUser();
+       // const user = useUser();
         const updateUser = useUserUpdate();
-        
-        
-        
-        useEffect(()=>{
-            if(Cookies.get("user")) {
-                const authUser = JSON.parse(Cookies.get("user"));
-                //console.log("The number of users to delete: ", userFN);
-            setFN(authUser.firstName);
-            //setLN(authUser.lastName);
-            updateUser();
 
-            console.log("The user from FN2 home component...", authUser.firstName);
 
-            }
-            
-        },[userFN])
+        //When a user hits the / link, the app reloads and we need to get the authUser
+
+        useEffect( () => {
+            const  isAuth = UserService.getAuthCookie();
+            const authUser = Cookies.get('un');
+              
+               
+                if(isAuth === "true") {
+        
+                  //setUserName(authUser);
+        
+                  UserService.getAuthUser(authUser)
+                  .then(response => {
+                    //console.log("The user is", response.data)
+                    setUser(response.data)
+                    updateUser(response.data)
+                  })
+                  .catch(err => {
+                    console.log("Error getting auth user ", err)
+                  })
+                }
+        
+        
+          },[homePage])
+        
+        
 
 
         console.log("Is user auth ?.. from home component....", UserService.getAuthCookie());
-        //console.log("The user FN from home component...", Cookies.get("firstName"));
+        console.log("The user is... from home component...", user);
        
         //setFN(authUser.firstName);
 
@@ -59,13 +71,15 @@ import UserProfile from "./UserProfile";
 
         }
 
+
        
 if(UserService.getAuthCookie()==="true") {
 
     return (
             
                 
-        <Content />
+        
+       <UserProfile user={user}/> 
        
     )
 

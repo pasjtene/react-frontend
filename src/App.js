@@ -17,6 +17,7 @@ import Cookies from 'js-cookie';
 import { UserProvider } from './component/user/UserContext';
 import { useUser } from './component/user/UserContext';
 import Content from './component/Content';
+import UserService from './services/UserService';
 //import User from './component/user/User';
 //import { logedInuser } from './component/user/User';
 
@@ -33,64 +34,37 @@ import Content from './component/Content';
 
 function App() {
   const [app_url, setApiUrl] = useState("");
-  const [signInuser, setUser] = useState({});
-  const [signInuser2, setUser2] = useState({});
- const user = useUser();
+  const [user, setUser] = useState({});
+  const [signInuserName, setUserName] = useState("");
+ //const user = useUser();
+
 
   
   
-
+//console.log("The user .. is ..",user);
  
   //const updateUser = useUserUpdate();
 
   console.log(window.location);
   const ref = useRef(null);
 
-  useEffect(() => {
-
-    //console.log("The user f..", <User/>)
-    //const user = useUser();
-    setUser2(user);
-    console.log("The user f5 is..", user.firstName);
-    
-
-    const el = document.getElementById('loginout');
-    console.log("The ellement...", el);
-
-    // 👇️ (better) use a ref
-    const el2 = ref.current;
-    console.log(el2);
-
-    if(Cookies.get("user")) {
-      const authUser = JSON.parse(Cookies.get("user"));
-      //console.log("The number of users to delete: ", userFN);
-      setUser(authUser);
-  //setLN(authUser.lastName);
-
-  console.log("The user from FN2 home component...", authUser.firstName);
-
-  }
-
-  },[]
 
 
-
-
-  );
 
   return (
 
     
-      <UserProvider>
-
+    <UserProvider>
       
-
+        
     <div className="App">
 
           <div className="navDiv">
             <div className='navDivIner'>
             <Navbar/>
             <Clock/>
+            
+        
             </div>
                    
                 </div>
@@ -100,7 +74,8 @@ function App() {
 
   
                 <Routes>
-                  <Route path="/" element={<HomeComponent/>} />
+               
+                <Route path="/" element={<HomeComponent user={user}/>} />
                   <Route path="/api/login" element={<Login/>} />
                   <Route path="/talodu/api/login" element={<Login/>} />
                   <Route path="/register" element={<Register/>} />
@@ -110,6 +85,7 @@ function App() {
                   <Route path="/talodu/api/logout" element={<Logout/>} />
                   <Route path="/talodu/api/profile" element={<UserProfile/>} />
                   <Route path="/api/profile" element={<Content target="user-profile"/>} />
+                  
                   
                 </Routes>
 

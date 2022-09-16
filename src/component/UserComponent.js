@@ -6,6 +6,8 @@ import Login from "./Login";
 import AddUser from "./AddUserComponent";
 import UploadFile from "./UploadFile";
 import NotAuthorized from "./NotAuthorized";
+import UserProfile from "./UserProfile";
+import UserDetails from "./user/UserDetails";
 
 function returnn(){
     console.log("The users is empty")
@@ -23,7 +25,8 @@ class UserComponent extends React.Component {
         this.state = {
             users:[],
             homePage: "uselist",
-            responseStatus: 0
+            responseStatus: 0,
+            user: {}
         }
         
     }
@@ -44,6 +47,29 @@ class UserComponent extends React.Component {
         });
     }
 
+
+
+     handleUser = (id) => {
+
+       const user = this.state.users.length?this.state.users.map(user => { 
+        if(user.id == id){
+            this.setState({user: user});
+            return user
+
+        }
+        }):{}
+
+       
+        this.setState({homePage: "userDetails"})
+
+        //return user;
+    }
+
+
+
+   
+   
+
     
 
     
@@ -56,6 +82,7 @@ class UserComponent extends React.Component {
             case "login": return (<div> <Login/> </div>);
             case "userlist": return (<div> <UserComponent/> </div>);
             case "adduser": return (<div> <AddUser/> </div>);
+            case "userDetails": return (<div> <UserDetails user={this.state.user}/> </div>);
         
         }
 
@@ -109,9 +136,8 @@ class UserComponent extends React.Component {
                             <tbody>
                                 {
                                     
-                            
                                     this.state.users.length?this.state.users.map(user => <tr key = {user.id}>
-                                        <td>{user.id}</td>
+                                        <td id={user.id}  onClick={(e)=>{this.handleUser(e.target.id)}}>{user.id} </td>
                                         <td>{user.firstName}</td>
                                         <td>{user.lastName}</td>
                                         <td>{user.email}</td>

@@ -1,15 +1,12 @@
 import React from "react";
-import UserService from "../services/UserService";
-import HomeComponent from "./HomeComponent";
 import Register from "../Register";
 import Login from "./Login";
 import AddUser from "./AddUserComponent";
 import UploadFile from "./UploadFile";
 import Cookies from 'js-cookie';
 import UserComponent from "./UserComponent";
-import { useUser, useUserUpdate} from "./user/UserContext";
-//import { UserContext } from "./Login";
-//import { useUser, useUserUpdate} from "./user/UserContext";
+import UserLeftSideNav from "./user/UserLeftSideNav";
+
 
 const IMAGE_URL = "http://51.68.196.188:8080";
 
@@ -35,12 +32,7 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount() {
-       // const user = this.context;
-       //const user = useUser();
-        //const updateUser = useUserUpdate();
-        //console.log("THe user 123 is: ", user);
-        
-        
+       
 
         if(Cookies.get("user")) {
 
@@ -71,16 +63,15 @@ class UserProfile extends React.Component {
         }
 
          return (
-          // <UserContext.Consumer >
+          
 
-          // {(user) => {
-          //return
+
+
             
-            <div className="parentdiv"> 
+            <div className="parentdiv">
 
-
-
-            <UploadFile/>
+            <UserLeftSideNav/>    
+         
         
             
                 <div className="container">
@@ -132,6 +123,8 @@ class UserProfile extends React.Component {
 
 
                 </div>
+
+                <UploadFile/>
 
                 
             </div>

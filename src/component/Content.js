@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 
 import { useEffect, useState } from "react";
 import Login from "./Login";
+import UserRoles from "./user/UserRoles";
 
 //function Content(props) {
     const Content = (props) => {
@@ -32,6 +33,7 @@ import Login from "./Login";
 
     switch(tartget) {
         case "user-profile" : return (<UserProfile user={user}/> );
+        case "user-roles" : return (<UserRoles user={user}/> );
     }
 
 

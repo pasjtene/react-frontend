@@ -86,6 +86,22 @@ body {
   margin-top: 150px;
 }
 
+.content {
+  display: flex;
+}
+
+.remove-roles, .add-roles {
+  border-radius: 5px;
+  border: 1px solid lightblue;
+  background-color: yellowgreen;
+  margin-bottom: 20px;
+}
+
+.remove-roles:hover, .add-roles:hover {
+  cursor: pointer;
+  background-color: lightblue;;
+}
+
 .container1 {
   display: flex;
   /*
@@ -97,6 +113,7 @@ align-items: center;
   flex-wrap: wrap;
 
   border: 3px solid violet;
+ 
 }
 
 .addUserForm {

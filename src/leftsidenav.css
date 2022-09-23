@@ -1,0 +1,21 @@
+.left-side-nav {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid red;
+    width: 15%;
+    height: 500px;
+    background-color: grey;
+}
+
+.left-nav-item {
+border: 1px solid lightblue;
+background-color: lightslategray;
+
+}
+
+.left-nav-item:hover {
+    cursor: pointer;
+    border: 1px solid lightblue;
+    background-color: lightblue;
+    
+    }

@@ -96,44 +96,78 @@ class UserService {
         
     }
 
+    hasRolev1(role, roles) {
+        //receives the user Roles and check if it has the provided role
+        //This is used to display only the roles that the user does not already have
+        //Can be used to give access to the user based on their roles
+        console.log("The roles", roles);
+
+        if(roles) {
+            for (var i = 0; i < roles.length; i++) {
+                
+    
+                if (roles[i].name === role) {
+                    return true;
+                }
+            }
+
+        }
+       
+    
+        return false;
+        
+    }
+
 
 
     
     getUsers() {
-        /** 
         
-        if(mylocation === "http://localhost:3000") {
-            console.log("Yes, we are local");
-            return axios.get(LOCAL_USERS_REST_API_URL);
-            
-
-        } else {
-            console.log("We are on the server, we are not local");
-            return axios.get(USERS_REST_API_URL);
-
-        }
-        */
-
         return axios.get(AppService.app_url("/api/users"))
+    
+    }
+
+    getRoles() {
+        
+        return axios.get(AppService.app_url("/api/roles"))
+    
+    }
+
+
+
+    addRolesToUser(data) {
+        
+        //return axios.post(AppService.app_url("/api/addrolestouser"))
+
+        console.log("The user and roles...", data);
+        
+
+        return axios.post(AppService.app_url("/api/addrolestouser"), data,
+        {
+             headers: { 'Content-Type': 'application/json'}
+     
+       });
+    
+    }
+
+    removeUserRoles(data) {
+        
+        //return axios.post(AppService.app_url("/api/addrolestouser"))
+
+        console.log("The user and roles...", data);
+        
+
+        return axios.post(AppService.app_url("/api/removeuserrole"), data,
+        {
+             headers: { 'Content-Type': 'application/json'}
+     
+       });
     
     }
 
 
     logOut () {
       
-/*
-        if(mylocation === "http://localhost:3000") {
-            console.log("Yes, we are local");
-            return axios.get(LOCAL_LOGOUT_API_URL);
-            
-
-        } else {
-            console.log("We are on the server, we are not local");
-            return axios.get(LOGOUT_API_URL);
-
-        }
-        */
-
         return axios.get(AppService.app_url("/api/logout"))
 
 
@@ -174,28 +208,6 @@ class UserService {
 
 
     registerUser(data) {
-
-/*
-        if(mylocation === "http://localhost:3000") {
-        
-            return axios.post(LOCAL_REGISTER_API_URL, data,
-                {
-                     headers: { 'Content-Type': 'application/json'}
-             
-               }
-            );
-            
-
-        } else {
-            
-            return axios.post(REGISTER_API_URL, data,
-                {
-                     headers: { 'Content-Type': 'application/json'}
-             
-               });
-
-        }
-*/
 
 
         return axios.post(AppService.app_url("/api/register"), data,

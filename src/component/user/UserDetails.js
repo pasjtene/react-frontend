@@ -1,80 +1,94 @@
 
-import React from "react";
-//import UserService from "../services/UserService";
-//import HomeComponent from "./HomeComponent";
-//import Register from "../Register";
-//import Login from "./Login";
-//import AddUser from "./AddUserComponent";
+import React, { useState } from "react";
+import { useUser, useUserUpdate  } from "./UserContext";
+import { useEffect } from "react";
+
+import UserLeftSideNav from "./UserLeftSideNav";
 import UploadFile from "../UploadFile";
+import UserRoles from "./UserRoles";
+import UserImages from "./UserImages";
 //import Cookies from 'js-cookie';
-//import UserComponent from "./UserComponent";
-//import { useUser, useUserUpdate} from "./user/UserContext";
-//import { UserContext } from "./Login";
-//import { useUser, useUserUpdate} from "./user/UserContext";
+
 
 const IMAGE_URL = "http://51.68.196.188:8080";
 
 const mylocation = window.location.origin;
 
 
-
-class UserDetails extends React.Component {
+const UserDetails = (props) => {
+//class UserDetails extends React.Component {
    // const authUser = JSON.parse(Cookies.get("user"));
    //static contextType = UserContext;
+
+   const [homePage, setHomePage] = useState("");
+   //const [user, setUser] = useState({});
+
    
+  // useUserUpdate(this.props.user);
+   const user = useUser();
+   const updateUser = useUserUpdate();
+   const [updatedUser, setUser] = useState({});
 
-    constructor(props) {                
-        super(props)
+   
+   //const updateUser = useUserUpdate();
 
-        this.state = {
-            //users:[],
-            homePage: "uselist",
-            profileImagePath: "",
-            user: {}
-        }
-        
-    }
-
-    componentDidMount() {
+   useEffect(()=>{
+       console.log("The user to target is:...", user);
        
-        
-        console.log("The user cookie was removed...");
+       //if(Cookies.get("user")) {
+           if(user.id) {
+               
+               console.log("Settinng target to ...",props.user);
+               updateUser(props.user);
+               setUser(user);
 
-     
-    }
+           }
+           //const authUser = JSON.parse(Cookies.get("user"));
+          
+       console.log("The target Component is ", props.user);
 
-    
+       
 
-    render () {
+      // }
+       
+   },[updatedUser])
         
-        
-        switch (this.state.homePage) {
+        switch ({homePage}) {
             //case "register" : return (<div> <Register /> </div>);
             //case "login": return (<div> <Login/> </div>);
             //case "userlist": return (<div> <UserComponent/> </div>);
-            //case "adduser": return (<div> <AddUser/> </div>);
+            case "roles1": return (<div> <UserRoles user={this.props.user}/> </div>);
         
         }
 
-         return (
-          // <UserContext.Consumer >
 
-          // {(user) => {
-          //return
+
+         return (
+         
             
             <div className="parentdiv"> 
 
-
-
-            <UploadFile/>
+<div className="left-side-nav">
+       {props.user.firtsName}
+        <span className="left-nav-item" onClick={(e)=>{setHomePage("images")}} >images</span>
+        <span className='left-nav-item'>Videos</span>
+        <span className='left-nav-item'>Audios</span>
+        <span className='left-nav-item' onClick={(e)=>{setHomePage("friends")}} >Friends</span>
+        <span className='left-nav-item' onClick={(e)=>{setHomePage("messages")}} >Messages</span>
+        <span className='left-nav-item'>Shops</span>
+        <span className='left-nav-item' onClick={(e)=>{setHomePage("roles")}}>Roles</span>
+        <span className='left-nav-item'>Pages</span>
         
+    </div>
+
+
             
                 <div className="container">
 
-                <img src={window.location.origin + ':8080/images/'+ this.props.user.profileImagePath} />
+                <img src={window.location.origin + ':8080/images/'+ props.user.profileImagePath} />
                     
 
-                        <h1 className="text-center">User details for ..1 {this.props.user.firstName}</h1>
+                        <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>
                         
                 
                         <table className="table table-striped">
@@ -97,17 +111,17 @@ class UserDetails extends React.Component {
                                         
                             
                                         <img className="imgthumbnail"
-                                         src={window.location.origin + ':8080/images/'+  this.state.user.profileImagePath} />
+                                         src={window.location.origin + ':8080/images/'+  props.user.profileImagePath} />
                                        
                                         <img className="imgthumbnail" src={window.location.origin + '/'+ "logo192.png"} />
                                         </td>
-                                        <td> {this.props.user.id}</td>
-                                        <td>{this.props.user.firstName}</td>
-                                        <td>{this.props.user.lastName}</td>
-                                        <td>{this.props.user.email}</td>
+                                        <td> {props.user.id}</td>
+                                        <td>{props.user.firstName}</td>
+                                        <td>{props.user.lastName}</td>
+                                        <td>{props.user.email}</td>
                                         
-                                        <td>{this.props.user.username}</td>
-                                        <td>{this.props.user.roles? this.props.user.roles.map(role=>role.name+", "):""}</td>
+                                        <td>{props.user.username}</td>
+                                        <td>{user.roles? user.roles.map(role=>role.name+", "):""}</td>
                                         
                                         
                                     </tr>
@@ -115,24 +129,22 @@ class UserDetails extends React.Component {
                             </tbody>
                         </table>
 
-
+                                {homePage=="roles"?<UserRoles/>:null}
+                                {homePage=="images"?<UserImages/>:null}
+                        
 
                 </div>
 
+            
+        
+
                 
             </div>
-            // }}
-            //</UserContext.Consumer>
+           
         )
     }
 
-}
-
-
-//const UserDetails = (props) {}
-
-
-
+//}
 
 
 export default UserDetails

@@ -1,21 +1,13 @@
 import React from "react";
 import UserService from "../services/UserService";
-import HomeComponent from "./HomeComponent";
 import Register from "../Register";
 import Login from "./Login";
 import AddUser from "./AddUserComponent";
 import UploadFile from "./UploadFile";
 import NotAuthorized from "./NotAuthorized";
-import UserProfile from "./UserProfile";
 import UserDetails from "./user/UserDetails";
 
-function returnn(){
-    console.log("The users is empty")
-
-    return false;
-
-}   
-
+ 
 
 
 class UserComponent extends React.Component {

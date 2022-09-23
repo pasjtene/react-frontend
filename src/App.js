@@ -15,9 +15,10 @@ import Clock from './component/Clock';
 import React from 'react';
 import Cookies from 'js-cookie';
 import { UserProvider } from './component/user/UserContext';
-import { useUser } from './component/user/UserContext';
+//import { useUser } from './component/user/UserContext';
 import Content from './component/Content';
-import UserService from './services/UserService';
+import UserLeftSideNav from './component/user/UserLeftSideNav';
+//import UserService from './services/UserService';
 //import User from './component/user/User';
 //import { logedInuser } from './component/user/User';
 
@@ -64,15 +65,14 @@ function App() {
             <Navbar/>
             <Clock/>
             
-        
-            </div>
-                   
-                </div>
+
         
 
-      <div className="container1">
+            <div className='content'>
 
-  
+            
+
+                <div className="container1">
                 <Routes>
                
                 <Route path="/" element={<HomeComponent user={user}/>} />
@@ -85,12 +85,21 @@ function App() {
                   <Route path="/talodu/api/logout" element={<Logout/>} />
                   <Route path="/talodu/api/profile" element={<UserProfile/>} />
                   <Route path="/api/profile" element={<Content target="user-profile"/>} />
+                  <Route path="/user/roles" element={<Content target="user-roles"/>} />
+
                   
                   
                 </Routes>
+                </div>
+            </div>
 
-    
-      </div>
+              
+            </div>
+                   
+          </div>
+        
+
+      
         <p>
           End User Component
 

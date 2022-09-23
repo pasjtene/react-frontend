@@ -113,11 +113,7 @@ const handleSelectedUser = (id, userSected) => {
         selectedUsers.push(id);
 
         setNusersToDelete(selectedUsers.length);
-        //console.log(Object.assign({}, selectedUsers));
-
-        //console.log("The array0 : ", array);
-        //array.push(id);
-       // console.log("The selected users",selectedUsers);
+        
     } else {
         setSelectedUser(id+userSected);
         //console.log("The user is NOT selected");

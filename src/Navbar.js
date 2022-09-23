@@ -89,7 +89,7 @@ export default function Navbar({ children, settings }) {
                 //console.log ("Setting autval..true..", userString1);
             } else {
                 setAuthVal("LogIn");
-                //console.log ("Setting autval not true..", userString1);
+                
             }
 
             if(setTimeElapsed()%5 >3 ) {
@@ -207,14 +207,8 @@ export default function Navbar({ children, settings }) {
 
             </div>
                   
-        
-
-
-
-
+    
         <button onClick={()=>setShowLinks(!showLinks)}><Reorder/></button>
-
-
 
             </div>
 

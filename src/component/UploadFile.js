@@ -221,6 +221,8 @@ axios.defaults.withCredentials = true;
                 //jm.push(resp.data.profileImagePath);
                 //this.setState({jimage:  [...this.state.jimage, resp.data.profileImagePath] });
                 userImages.push(resp.data.profileImagePath);
+                updateUser(resp.data);
+                setUpdatedUser(resp.data);
 
 
 

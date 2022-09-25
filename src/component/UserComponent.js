@@ -7,6 +7,7 @@ import UploadFile from "./UploadFile";
 import NotAuthorized from "./NotAuthorized";
 import UserDetails from "./user/UserDetails";
 
+
  
 
 
@@ -53,6 +54,7 @@ class UserComponent extends React.Component {
 
        
         this.setState({homePage: "userDetails"})
+        window.history.pushState({}, null, "/users/details/images");
 
         //return user;
     }
@@ -101,9 +103,6 @@ class UserComponent extends React.Component {
              
             <div className="parentdiv"> 
 
-
-
-<UploadFile/>
         
 
                 <div className="container">

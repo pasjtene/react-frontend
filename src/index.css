@@ -54,6 +54,10 @@ body {
   width: 75px;
 }
 
+.imgmidsize {
+  width: 300px;
+}
+
 .container {
   display: flex;
   flex-direction: column;

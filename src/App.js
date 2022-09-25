@@ -18,6 +18,7 @@ import { UserProvider } from './component/user/UserContext';
 //import { useUser } from './component/user/UserContext';
 import Content from './component/Content';
 import UserLeftSideNav from './component/user/UserLeftSideNav';
+import UserDetails from './component/user/UserDetails';
 //import UserService from './services/UserService';
 //import User from './component/user/User';
 //import { logedInuser } from './component/user/User';
@@ -79,6 +80,7 @@ function App() {
                   <Route path="/api/login" element={<Login/>} />
                   <Route path="/talodu/api/login" element={<Login/>} />
                   <Route path="/register" element={<Register/>} />
+                  <Route path="/users/details/images" element={<Content target="user-images"/>}  />
                   <Route path="/users/list" element={<UserComponent/>} />
                   <Route path="/user/add" element={<AddUser/>} />
                   <Route path="/api/logout" element={<Logout/>} />
@@ -86,6 +88,10 @@ function App() {
                   <Route path="/talodu/api/profile" element={<UserProfile/>} />
                   <Route path="/api/profile" element={<Content target="user-profile"/>} />
                   <Route path="/user/roles" element={<Content target="user-roles"/>} />
+                  
+                  
+
+                  
 
                   
                   

@@ -130,7 +130,7 @@ const UserDetails = (props) => {
                         </table>
 
                                 {homePage=="roles"?<UserRoles/>:null}
-                                {homePage=="images"?<UserImages/>:null}
+                                {homePage=="images"?<UserImages user={user}/>:null}
                         
 
                 </div>

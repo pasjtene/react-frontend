@@ -18,8 +18,6 @@ import UserProfile from "./UserProfile";
 //import { useUser } from "./Login";
 
 
-
-
     const HomeComponent = (props) => {
         const [homePage, setHomePage] = useState("");
         const [userFN, setFN] = useState("Guest");
@@ -54,9 +52,7 @@ import UserProfile from "./UserProfile";
         
           },[homePage])
         
-        
-
-
+    
         console.log("Is user auth ?.. from home component....", UserService.getAuthCookie());
         console.log("The user is... from home component...", user);
        
@@ -68,7 +64,6 @@ import UserProfile from "./UserProfile";
             case "userlist": return (<div> <UserComponent/> </div>);
             case "adduser": return (<div> <AddUser/> </div>);
             
-
         }
 
 

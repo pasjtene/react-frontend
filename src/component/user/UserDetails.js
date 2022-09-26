@@ -69,14 +69,7 @@ const UserDetails = (props) => {
             
             <div className="parentdiv"> 
 
-
-                <div className="container">
-
-                
-                <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>
-                    <div className="user-detail">
-
-                    <div className="left-side-nav">
+<div className="left-side-nav">
        {props.user.firtsName}
         <span className="left-nav-item" onClick={(e)=>{setHomePage("images")}} >images</span>
         <span className='left-nav-item'>Videos</span>
@@ -88,6 +81,15 @@ const UserDetails = (props) => {
         <span className='left-nav-item'>Pages</span>
         
     </div>
+
+
+                <div className="container">
+
+                
+                <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>
+                    <div className="user-detail">
+
+
 
                     <img className="imgmidsize"  src={AppService.show_image_url(user.profileImagePath) } />
 
@@ -103,7 +105,7 @@ const UserDetails = (props) => {
                                 {homePage=="images"?<UserImages user={user}/>:null}
                                 {props.homePage=="images"?<UserImages user={user}/>:null}
                        
-                </div>
+                    </div>
 
             
             </div>

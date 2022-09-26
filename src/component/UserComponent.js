@@ -54,7 +54,7 @@ class UserComponent extends React.Component {
 
        
         this.setState({homePage: "userDetails"})
-        window.history.pushState({}, null, "/users/details/images");
+       // window.history.pushState({}, null, "/users/details/images");
 
         //return user;
     }

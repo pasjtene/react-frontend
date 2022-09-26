@@ -18,6 +18,7 @@ if(user) {
 }
 */
 //const authUser = JSON.parse(Cookies.get("user"));
+
 const mylocation = window.location.origin;
 
 const LOCAL_FILE_UPLOAD_URL = "http://localhost:8086/api/uploadfile";
@@ -114,16 +115,7 @@ axios.defaults.withCredentials = true;
         fd.append("File", selectedFile, selectedFile.name);
         fd.append("Email", user.email);
         console.log("The user is...",user)
-        //console.log("The user from props is...",props.user)
-        //fd.append("File", this.state.selectedfile, this.state.selectedfile.name);
-        //fd.append("Email", JSON.parse(Cookies.get("user")).email);
-        
-        
-
-        console.log("The fd is..",fd);
-
- 
-          console.log("The current location is..",mylocation );
+      
 
         if(mylocation === "http://localhost:3000") {
 
@@ -142,9 +134,6 @@ axios.defaults.withCredentials = true;
             );
 
 
-            console.log("The response..");
-            console.log(resp?.status);
-
                 if (resp.status === 201)  {
 
                     console.log("The response status is 201, file upload success");
@@ -152,26 +141,19 @@ axios.defaults.withCredentials = true;
 
                     updateUser(resp.data);
                     setUpdatedUser(resp.data);
-                    
-                    
-
+                
                     console.log(resp.data.profileImagePath);
 
                 //this.setState({result: "File uploaded successfully"});
                 setUploadResult("File uploaded successfully")
                 //this.setState({profileImagePath: resp.data.profileImagePath });
                 setProfileImagePath("../img/Photo-ID-2.jpg");
-                //this.setState({profileImagePath:  "../img/Photo-ID-2.jpg" });
+               
 
                 //const jm = [];
                 userImages.push(resp.data.profileImagePath)
-                console.log("The user images",);
-                console.log(userImages);
-                //navigate('/home');
-                //jm.push(resp.data.profileImagePath);
-               // this.setState({jimage:  [...this.state.jimage, resp.data.profileImagePath] });
-               
-
+                
+              
                 }
 
                 if (resp.status === 505)  {
@@ -212,21 +194,11 @@ axios.defaults.withCredentials = true;
 
             );
 
-            console.log("The response..");
-            console.log(resp?.status);
-            //this.setState({result: resp?.status});
             setUploadResult(resp?.status);
 
-                //const jm = [];
-                //jm.push(resp.data.profileImagePath);
-                //this.setState({jimage:  [...this.state.jimage, resp.data.profileImagePath] });
                 userImages.push(resp.data.profileImagePath);
                 updateUser(resp.data);
                 setUpdatedUser(resp.data);
-
-
-
-
 
             } catch (err) {
 
@@ -240,11 +212,6 @@ axios.defaults.withCredentials = true;
 
     }
 
-   
-//render ()
-    
- //{
-
     return (
         <div style={{display: "flex", flexDirection:"column"}}>
           
@@ -254,15 +221,25 @@ axios.defaults.withCredentials = true;
             //ref={fileInput => this.fileInput = fileInput}
             ref={fileInput} 
             />
-            <button
+            <div style={{display: "flex"}}>
+            <button style={{width: "200px"}}
             //</div> onClick={()=> this.fileInput.click()}
             onClick={(e)=>{e.preventDefault(); handleFileUploadClick(e)}}
-            >chose a file
+            >chose a file 
              </button>
+             <h5>{selectedFile?selectedFile.name:""}</h5> 
+            </div>
+            
 
-            <button onClick={(e)=>{e.preventDefault();  fileUploadHandler(e)}}>Upload</button>
+             <div style={{display: "flex"}}>
+             <button style={{width: "200px"}}
+                onClick={(e)=>{e.preventDefault();  fileUploadHandler(e)}}>Upload</button>
+                
+                {selectedFile?<h5>Upload progress: {progress} % </h5> :""}
+                </div>
 
-            <h3>Upload progress: {progress} % </h3> 
+            
+
             <div>
             <h5>{result}</h5> 
             </div>
@@ -272,8 +249,6 @@ axios.defaults.withCredentials = true;
             </div>
 
             
-
-
         </div>
     )
 

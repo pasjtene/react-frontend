@@ -69,7 +69,14 @@ const UserDetails = (props) => {
             
             <div className="parentdiv"> 
 
-<div className="left-side-nav">
+
+                <div className="container">
+
+                
+                <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>
+                    <div className="user-detail">
+
+                    <div className="left-side-nav">
        {props.user.firtsName}
         <span className="left-nav-item" onClick={(e)=>{setHomePage("images")}} >images</span>
         <span className='left-nav-item'>Videos</span>
@@ -82,71 +89,23 @@ const UserDetails = (props) => {
         
     </div>
 
+                    <img className="imgmidsize"  src={AppService.show_image_url(user.profileImagePath) } />
 
-            
-                <div className="container">
-                    
-
-                <img className="imgmidsize" src={window.location.origin + ':8080/images/'+ user.profileImagePath} />
-                <img className="imgmidsize"  src={window.location.origin +"/images/"+ user.profileImagePath} />
-
-                <img className="imgmidsize"  src={AppService.show_image_url(user.profileImagePath) } />
-
+                    <div>
+                    <h1> {user.firstName} {props.user.lastName}</h1>
+                    <h4> {user.email}</h4>
+                    <h4>{user.roles? user.roles.map(role=>role.name+", "):""}</h4>
+                    </div>
                 
-                    
-
-                        <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>
-                        
-                
-                        <table className="table table-striped">
-                            <thead>
-                                <tr>
-                                    <td>pic</td>
-                                    <td>Id</td>
-                                    <td>First name</td>
-                                    <td>last Name</td>
-                                    <td>email</td>
-                                    
-                                    <td>User username</td>
-                                    <td>Roles</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    <tr>
-                                        <td>
-                                        
-                            
-                                        <img className="imgthumbnail"
-                                         src={window.location.origin + ':8080/images/'+  props.user.profileImagePath} />
-                                       
-                                        <img className="imgthumbnail" src={window.location.origin + '/'+ "logo192.png"} />
-                                        </td>
-                                        <td> {props.user.id}</td>
-                                        <td>{props.user.firstName}</td>
-                                        <td>{props.user.lastName}</td>
-                                        <td>{props.user.email}</td>
-                                        
-                                        <td>{props.user.username}</td>
-                                        <td>{user.roles? user.roles.map(role=>role.name+", "):""}</td>
-                                        
-                                        
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-
+                    </div>
+                   
                                 {homePage=="roles"?<UserRoles/>:null}
                                 {homePage=="images"?<UserImages user={user}/>:null}
                                 {props.homePage=="images"?<UserImages user={user}/>:null}
-                        
-
+                       
                 </div>
 
             
-        
-
-                
             </div>
            
         )

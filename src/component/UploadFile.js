@@ -247,28 +247,7 @@ axios.defaults.withCredentials = true;
 
     return (
         <div style={{display: "flex", flexDirection:"column"}}>
-            <img className="imgmidsize"  src={window.location.origin +"/images/"+ user.profileImagePath} />
-
-            <h3>Upload progress: {progress} % </h3> 
-            <div>
-            <h5>{result}</h5> 
-            </div>
-
-            <div>
-            <h5> Profile image:
-               
-            
-            </h5> 
-
           
-
-
-    <img className="imgthumbnail"  src={window.location.origin +"/images/"+ user.profileImagePath} />
-                <img className="imgthumbnail"  src= {  require("../img/Photo-ID-2.jpg")} />
-            </div>
-
-            
-
             <input style={{display: "none"}} 
             type="file" 
             onChange={(e) => {e.preventDefault(); fileSelectedHandler(e)}}
@@ -282,6 +261,15 @@ axios.defaults.withCredentials = true;
              </button>
 
             <button onClick={(e)=>{e.preventDefault();  fileUploadHandler(e)}}>Upload</button>
+
+            <h3>Upload progress: {progress} % </h3> 
+            <div>
+            <h5>{result}</h5> 
+            </div>
+            <div>
+                <img className="imgthumbnail"  src={window.location.origin +"/images/"+ user.profileImagePath} />
+                <img className="imgthumbnail"  src= {  require("../img/Photo-ID-2.jpg")} />
+            </div>
 
             
 

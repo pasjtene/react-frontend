@@ -131,6 +131,10 @@ align-items: center;
   flex-direction: column;
 }
 
+.user-detail {
+  display: flex;
+}
+
 .registerForm {
   /*
   flex: 0 0 10em;

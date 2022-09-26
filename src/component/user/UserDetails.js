@@ -85,7 +85,7 @@ const UserDetails = (props) => {
             
                 <div className="container">
 
-                <img src={window.location.origin + ':8080/images/'+ props.user.profileImagePath} />
+                <img className="imgmidsize" src={window.location.origin + ':8080/images/'+ props.user.profileImagePath} />
                     
 
                         <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>
@@ -131,6 +131,7 @@ const UserDetails = (props) => {
 
                                 {homePage=="roles"?<UserRoles/>:null}
                                 {homePage=="images"?<UserImages user={user}/>:null}
+                                {props.homePage=="images"?<UserImages user={user}/>:null}
                         
 
                 </div>

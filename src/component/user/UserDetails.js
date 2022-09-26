@@ -7,6 +7,7 @@ import UserLeftSideNav from "./UserLeftSideNav";
 import UploadFile from "../UploadFile";
 import UserRoles from "./UserRoles";
 import UserImages from "./UserImages";
+import AppService from "../../services/AppService";
 //import Cookies from 'js-cookie';
 
 
@@ -84,8 +85,14 @@ const UserDetails = (props) => {
 
             
                 <div className="container">
+                    
 
-                <img className="imgmidsize" src={window.location.origin + ':8080/images/'+ props.user.profileImagePath} />
+                <img className="imgmidsize" src={window.location.origin + ':8080/images/'+ user.profileImagePath} />
+                <img className="imgmidsize"  src={window.location.origin +"/images/"+ user.profileImagePath} />
+
+                <img className="imgmidsize"  src={AppService.show_image_url(user.profileImagePath) } />
+
+                
                     
 
                         <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>

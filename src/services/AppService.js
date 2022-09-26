@@ -23,6 +23,21 @@ class AppService {
     
     }
 
+    show_image_url(url) {
+
+        if(mylocation === "http://localhost:3000") {
+            // console.log("Yes, we are local");
+             return mylocation+"/images/"+url;
+             
+ 
+         } else {
+             //console.log("We are on the server, we are not local");
+             return mylocation+':8080/images/'+url;
+ 
+         }
+        
+    }
+
 
 
 

@@ -15,6 +15,7 @@ import {  AuthContext } from "../Navbar";
 import Cookies from 'js-cookie';
 import { useUser, useUserUpdate} from "./user/UserContext";
 import Content from "./Content";
+import UserDetails from "./user/UserDetails";
 //import { UserContext } from "../App";
 
 
@@ -39,7 +40,7 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
 
         const userc = useUser();
         const updateUser = useUserUpdate();
-        //useUserUpdate({});
+        useUserUpdate({});
 
         useEffect(()=>{
 
@@ -75,11 +76,10 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
             case "userlist": return (<div> <UserComponent/> </div>);
             //case "homepage": return (<div> <HomeComponent firstName={userFN} lastName={userLN} user={user} /> </div>);
             //case "homepage": return (<div> <HomeComponent /> </div>);
-            case "homepage": return (<div> <Content target="user-profile"/> </div>);
+            //case "homepage": return (<div> <Content target="user-profile"/> </div>);
 
-
+            case "homepage": return (<div> <UserDetails user={user}/></div>);
             
-        
         }
 
         
@@ -94,26 +94,33 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
             try {
                 const response = await UserService.authenticate(JSON.stringify(data));
                 
-                console.log("Received auth data", response?.data);
+                //console.log("Received auth data", response?.data);
 
                 if(response.data) {
-                    console.log ("The auth response..");
-                    console.log(response.data);
+                    //console.log ("The auth response..");
+                    //console.log(response.data);
 
                     setFN(response.data.firstName);
                     //setLN(response.data.lastName);
-                    setUser(JSON.parse(JSON.stringify(response.data)))
+                   setUser(JSON.parse(JSON.stringify(response.data)))
 
                     //updating user context ...!!!
                     updateUser (JSON.parse(JSON.stringify(response.data)));
                    //Cookies.set("user",   JSON.stringify(response.data),{ path: '/', maxAge: 500 });
                    //Cookies.set("user",   JSON.stringify(response.data));
 
-                    Cookies.set("firstName", response.data.firstName);
+                    //Cookies.set("firstName", response.data.firstName);
                     
                     Cookies.set("userRoles",   JSON.stringify(response.data.roles));
 
-                    console.log("The user roles: ",JSON.stringify(response.data.roles))
+                    //console.log("The user roles: ",JSON.stringify(response.data.roles))
+
+                    console.log("Is user auth? ",isUserAuth);
+
+                setHomePage("homepage")
+                console.log("The iser from loging is...")
+                window.history.pushState({}, null, "/user/details/"+response.data.id);
+                Cookies.set("reloaded", "false");
 
 
                 }
@@ -121,9 +128,7 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
 
                // setAuth("true");
 
-                console.log("Is user auth? ",isUserAuth);
-
-                setHomePage("homepage")
+                
                 
                 
                 //setSuccess(true);

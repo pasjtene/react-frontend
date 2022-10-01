@@ -54,19 +54,11 @@ class UserComponent extends React.Component {
 
        
         this.setState({homePage: "userDetails"})
-       // window.history.pushState({}, null, "/users/details/images");
+        window.history.pushState({}, null, "/user/details/"+id);
 
         //return user;
     }
 
-
-
-   
-   
-
-    
-
-    
 
     render () {
 
@@ -96,18 +88,11 @@ class UserComponent extends React.Component {
         }
         
 
-
-
-
          return (
              
             <div className="parentdiv"> 
 
-        
-
                 <div className="container">
-
-                    
 
                         <h1 className="text-center">List of users</h1>
                 

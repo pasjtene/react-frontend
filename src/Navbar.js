@@ -5,6 +5,8 @@ import  {ReorderIcon} from "@mui/icons-material";
 import { SearchIcon } from "react-router-dom";
 import { Reorder } from "@mui/icons-material";
 import { Search } from "@mui/icons-material";
+import { useUser } from "./component/user/UserContext";
+import Cookies from 'js-cookie';
 
 
 //export const SampleContext = createContext("");
@@ -37,6 +39,9 @@ export default function Navbar({ children, settings }) {
     const ref = useRef(null);
 
     const [user, setUser] = useState({});
+    const [isUserAuth, setUserAuth] = useState('');
+    const [isAuth, setAuth] = useState('');
+    const [isAuthVal, setAuthVal] = useState('LogIn');
     
         
      
@@ -47,9 +52,9 @@ export default function Navbar({ children, settings }) {
     
     //const isUserAuth = UserService.getAuthCookie();
     //setCurrentSettings(isUserAuth);
-    const [isUserAuth, setUserAuth] = useState('');
-    const [isAuth, setAuth] = useState('');
-    const [isAuthVal, setAuthVal] = useState('LogIn');
+
+    const loginUser = useUser();
+    
     //const  isUserAuth = UserService.getAuthCookie();
 
     useEffect( () => {
@@ -78,18 +83,32 @@ export default function Navbar({ children, settings }) {
 
       useEffect( () => {
         const  isAuth = UserService.getAuthCookie();
-          //console.log("user auth: ", isUserAuth2);
+         
+          let count = 0;
 
           setInterval(() => {
             const userString1 = UserService.getAuthCookie();
+            const reloaded = Cookies.get('reloaded');
            
 
             if(userString1 === "true") {
                 setAuthVal("LogOut");
-                //console.log ("Setting autval..true..", userString1);
+               
             } else {
-                setAuthVal("LogIn");
+                //reloaded = 1;
+
                 
+                setAuthVal("LogIn");
+               
+                if(reloaded  != "true"){
+                   
+                    Cookies.set("reloaded", "true");
+                    window.history.pushState({}, null, "/api/login");
+                    //console.log("The user is.loged out.",loginUser.id)
+                    window.location.reload();
+    
+                } 
+  
             }
 
             if(setTimeElapsed()%5 >3 ) {
@@ -100,6 +119,12 @@ export default function Navbar({ children, settings }) {
 
             //console.log("Setting aut value.....",userString1);
             }, 1000)
+
+            
+
+            
+
+
 
       },[isUserAuth])
 
@@ -168,8 +193,12 @@ export default function Navbar({ children, settings }) {
 
                         <li>
                             {isAuth || isUserAuth === "true" ? 
-                            <CustomLink id="loginout" to={mylocation === "http://localhost:3000"? "/api/logout":"/talodu/api/logout"}>{isAuthVal}</CustomLink>: 
-                            <CustomLink  id="loginout" to= {mylocation === "http://localhost:3000"? "/api/login":"/talodu/api/login"} >{isAuthVal}</CustomLink> }
+                            <CustomLink id="loginout" 
+                            to={mylocation === "http://localhost:3000"? "/api/logout":"/talodu/api/logout"}>{isAuthVal}
+                            </CustomLink>: 
+                            <CustomLink  id="loginout" 
+                            to= {mylocation === "http://localhost:3000"? "/api/login":"/talodu/api/login"} >{isAuthVal}
+                            </CustomLink> }
                         </li>
 
             

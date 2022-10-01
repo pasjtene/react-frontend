@@ -79,7 +79,7 @@ class UserProfile extends React.Component {
                 <img src={window.location.origin + ':8080/images/'+ this.props.user.profileImagePath} />
                     
 
-                        <h1 className="text-center">List of users..12</h1>
+                        <h1 className="text-center">User profile for {this.props.user.firstName} {this.props.user.lastName}  </h1>
                         
                 
                         <table className="table table-striped">

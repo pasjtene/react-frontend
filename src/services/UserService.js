@@ -77,6 +77,18 @@ class UserService {
     }
 
 
+    getUserById(id) {
+        //const authUser = Cookies.get('un');
+
+        return axios.post(AppService.app_url("/api/user/details"), id,
+        {
+             headers: { 'Content-Type': 'application/json'}
+     
+       });
+
+    }
+
+
 
     hasRole(role) {
         const roles = JSON.parse(Cookies.get('userRoles')?Cookies.get('userRoles'):false);

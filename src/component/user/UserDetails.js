@@ -29,19 +29,21 @@ const UserDetails = (props) => {
    const user = useUser();
    const updateUser = useUserUpdate();
    const [updatedUser, setUser] = useState({});
+   
 
    
    //const updateUser = useUserUpdate();
 
    useEffect(()=>{
        console.log("The user to target is:...", user);
+       updateUser(props.user);
        
        //if(Cookies.get("user")) {
-           if(user.id) {
+           if(props.user.id) {
                
                console.log("Settinng target to ...",props.user);
                updateUser(props.user);
-               setUser(user);
+               setUser(props.user);
 
            }
            //const authUser = JSON.parse(Cookies.get("user"));
@@ -94,8 +96,8 @@ const UserDetails = (props) => {
                     <img className="imgmidsize"  src={AppService.show_image_url(user.profileImagePath) } />
 
                     <div>
-                    <h1> {user.firstName} {props.user.lastName}</h1>
-                    <h4> {user.email}</h4>
+                    <h1> {props.user.firstName} {props.user.lastName}</h1>
+                    <h4> {props.user.email}</h4>
                     <h4>{user.roles? user.roles.map(role=>role.name+", "):""}</h4>
                     </div>
                 
@@ -103,7 +105,7 @@ const UserDetails = (props) => {
                    
                                 {homePage=="roles"?<UserRoles/>:null}
                                 {homePage=="images"?<UserImages user={user}/>:null}
-                                {props.homePage=="images"?<UserImages user={user}/>:null}
+                                {props.homePage=="images"?<UserImages user={props.user}/>:null}
                        
                     </div>
 

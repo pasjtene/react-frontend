@@ -19,19 +19,7 @@ import { UserProvider } from './component/user/UserContext';
 import Content from './component/Content';
 import UserLeftSideNav from './component/user/UserLeftSideNav';
 import UserDetails from './component/user/UserDetails';
-//import UserService from './services/UserService';
-//import User from './component/user/User';
-//import { logedInuser } from './component/user/User';
 
-
-//const mylocation = window.location.origin;
-// Theme context, default to light theme
-//export const ThemeContext = React.createContext('light');
-
-// Signed-in user context
-//export const UserContext = React.createContext({
-  //user:{}
-//});
 
 
 function App() {
@@ -80,8 +68,8 @@ function App() {
                   <Route path="/api/login" element={<Login/>} />
                   <Route path="/talodu/api/login" element={<Login/>} />
                   <Route path="/register" element={<Register/>} />
-                  <Route path="/users/details/images" element={<Content target="user-images"/>}  />
-                  <Route path="/users/list" element={<UserComponent/>} />
+                  <Route path="/user/details/:id" element={<Content target="user-images"/>}  />
+                  <Route path="/users/list" element={<UserComponent/>}/>
                   <Route path="/user/add" element={<AddUser/>} />
                   <Route path="/api/logout" element={<Logout/>} />
                   <Route path="/talodu/api/logout" element={<Logout/>} />
@@ -89,12 +77,7 @@ function App() {
                   <Route path="/api/profile" element={<Content target="user-profile"/>} />
                   <Route path="/user/roles" element={<Content target="user-roles"/>} />
                   
-                  
-
-                  
-
-                  
-                  
+                 
                 </Routes>
                 </div>
             </div>

@@ -25,30 +25,6 @@ const instance = axios.create({
 
 const mylocation = window.location.origin;
 
-//const USERS_REST_API_URL = 'http://51.68.196.188:8080/talodu/api/users';
-//const LOCAL_USERS_REST_API_URL = 'http://localhost:8086/api/users';
-
-//const REGISTER_API_URL = 'http://51.68.196.188:8080/talodu/api/register';
-//const LOCAL_REGISTER_API_URL = 'http://localhost:8086/api/register';
-
-
-
-//const LOGIN_URL = 'http://51.68.196.188:8080/talodu/api/authenticate';
-//const LOCAL_LOGIN_URL = 'http://localhost:8086/api/authenticate';
-
-//const DELETE_USERS_API_URL = "http://51.68.196.188:8080/talodu/api/deleteusers";
-//const LOCAL_DELETE_USERS_API_URL = "http://localhost:8086/api/deleteusers";
-
-//const LOGOUT_API_URL = "http://51.68.196.188:8080/talodu/api/logout";
-//const LOCAL_LOGOUT_API_URL = "http://localhost:8086/api/logout";
-
-//const LOCAL_FILE_UPLOAD_URL = "http://localhost:8086/api/uploadfile";
-//const FILE_UPLOAD_URL = "http://51.68.196.188:8080/talodu/api/uploadfile";
-
-
-
-
-
 
 
 class UserService {
@@ -125,7 +101,6 @@ class UserService {
 
         }
        
-    
         return false;
         
     }

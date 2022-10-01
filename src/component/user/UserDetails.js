@@ -15,7 +15,6 @@ const IMAGE_URL = "http://51.68.196.188:8080";
 
 const mylocation = window.location.origin;
 
-
 const UserDetails = (props) => {
 //class UserDetails extends React.Component {
    // const authUser = JSON.parse(Cookies.get("user"));
@@ -24,51 +23,37 @@ const UserDetails = (props) => {
    const [homePage, setHomePage] = useState("");
    //const [user, setUser] = useState({});
 
-   
   // useUserUpdate(this.props.user);
    const user = useUser();
    const updateUser = useUserUpdate();
    const [updatedUser, setUser] = useState({});
    
-
-   
    //const updateUser = useUserUpdate();
 
    useEffect(()=>{
-       console.log("The user to target is:...", user);
+       //console.log("The user to target is:...", user);
        updateUser(props.user);
        
        //if(Cookies.get("user")) {
            if(props.user.id) {
-               
-               console.log("Settinng target to ...",props.user);
+            
                updateUser(props.user);
                setUser(props.user);
 
            }
-           //const authUser = JSON.parse(Cookies.get("user"));
-          
-       console.log("The target Component is ", props.user);
-
-       
-
-      // }
-       
+         
+    
    },[updatedUser])
         
         switch ({homePage}) {
-            //case "register" : return (<div> <Register /> </div>);
-            //case "login": return (<div> <Login/> </div>);
-            //case "userlist": return (<div> <UserComponent/> </div>);
+
             case "roles1": return (<div> <UserRoles user={this.props.user}/> </div>);
         
         }
 
 
-
          return (
          
-            
             <div className="parentdiv"> 
 
 <div className="left-side-nav">
@@ -84,14 +69,11 @@ const UserDetails = (props) => {
         
     </div>
 
-
                 <div className="container">
 
                 
                 <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>
                     <div className="user-detail">
-
-
 
                     <img className="imgmidsize"  src={AppService.show_image_url(user.profileImagePath) } />
 

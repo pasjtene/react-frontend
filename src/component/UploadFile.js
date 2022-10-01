@@ -43,23 +43,6 @@ axios.defaults.withCredentials = true;
         const [updatedUser, setUpdatedUser] = useState(user);
         const navigate = useNavigate();
 
-/** 
-        constructor(props) {                
-            super(props)
-            this.state = {
-                selectedfile: null,
-                progress: 0,
-                result: " ",
-                profileImagePath: "",
-                jimage: ["Photo-ID-2.jpg"]
-            }
-
-           
-            
-        }
-
-       */
-
 
         useEffect(()=>{
             //if (userImages.length) return;
@@ -176,8 +159,6 @@ axios.defaults.withCredentials = true;
             }
 
         }
-
-            
 
         } else {
 

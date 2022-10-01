@@ -124,14 +124,7 @@ const AUTH_URL = "http://localhost:8085/api/authenticate";
 
 
                 }
-                //window.location.reload(false);
-
-               // setAuth("true");
-
-                
-                
-                
-                //setSuccess(true);
+           
             
             } catch (err) {
                 console.log("error....Is user auth? ",isUserAuth);

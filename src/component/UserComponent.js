@@ -6,6 +6,7 @@ import AddUser from "./AddUserComponent";
 import UploadFile from "./UploadFile";
 import NotAuthorized from "./NotAuthorized";
 import UserDetails from "./user/UserDetails";
+import AppService from "../services/AppService";
 
 
  
@@ -42,7 +43,9 @@ class UserComponent extends React.Component {
 
 
 
-     handleUser = (id) => {
+     handleUser = (t, id) => {
+        console.log("The id is: ",id);
+        console.log("The target is: ",t);
 
        const user = this.state.users.length?this.state.users.map(user => { 
         if(user.id == id){
@@ -99,12 +102,12 @@ class UserComponent extends React.Component {
                         <table className="table table-striped">
                             <thead>
                                 <tr>
-                                    <td>User Id</td>
-                                    <td>User First name</td>
-                                    <td>User last Name</td>
-                                    <td>User email</td>
-                                    <td>User passwd</td>
-                                    <td>User username</td>
+                                    <td>Id</td>
+                                    <td>First name</td>
+                                    <td>last Name</td>
+                                    <td>email</td>
+                                    <td>passwd</td>
+                                    <td>username</td>
                                     <td>Roles</td>
                                     
                                 </tr>
@@ -112,8 +115,11 @@ class UserComponent extends React.Component {
                             <tbody>
                                 {
                                     
-                                    this.state.users.length?this.state.users.map(user => <tr key = {user.id}>
-                                        <td id={user.id}  onClick={(e)=>{this.handleUser(e.target.id)}}>{user.id} </td>
+                                    this.state.users.length?this.state.users.map(user => 
+                                    <tr  key = {user.id} > 
+                                        <td >
+                                        
+                                            <img id={user.id} onClick={(e)=>{this.handleUser(e.target, e.target.id)}}  className="imgthumbnail"  src={AppService.show_image_url(user.profileImagePath) } /> </td>
                                         <td>{user.firstName}</td>
                                         <td>{user.lastName}</td>
                                         <td>{user.email}</td>

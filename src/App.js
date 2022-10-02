@@ -55,8 +55,6 @@ function App() {
             <Clock/>
             
 
-        
-
             <div className='content'>
 
             
@@ -69,6 +67,7 @@ function App() {
                   <Route path="/talodu/api/login" element={<Login/>} />
                   <Route path="/register" element={<Register/>} />
                   <Route path="/user/details/:id" element={<Content target="user-images"/>}  />
+                  <Route path="/taludu/api/user/details/:id" element={<Content target="user-images"/>}  />
                   <Route path="/users/list" element={<UserComponent/>}/>
                   <Route path="/user/add" element={<AddUser/>} />
                   <Route path="/api/logout" element={<Logout/>} />

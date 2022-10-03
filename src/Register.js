@@ -45,6 +45,8 @@ const Register = () => {
    const [homePage, setHomePage] = useState("home");
    const [api_url, setRegisterUrl] = useState("");
 
+   const [registerError, setRegisterError] = useState('');
+
 
    useEffect( () => {
        const result = USER_REGEX.test(user);
@@ -114,6 +116,12 @@ try {
 
 } catch (err) {
     console.log(err);
+    console.log("Status code...",err.response.data);
+    console.log("Status code...",err.response.status);
+    if(err.response.status === 409) {
+        setRegisterError("The user already exist. Please check email: " + err.response.data.email);
+    }
+    
 }
 
 }
@@ -159,6 +167,12 @@ switch(homePage) {
 
 
                                 <h1>Register</h1>
+
+                                <div style={{color:"red"}}>
+                                <h4>{registerError}</h4>
+                                </div>
+                                
+                                
 
                                 <form onSubmit={handleSubmit}>
                                     <label htmlFor="username">

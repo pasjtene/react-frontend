@@ -106,8 +106,8 @@ class UserComponent extends React.Component {
                                     <td>First name</td>
                                     <td>last Name</td>
                                     <td>email</td>
-                                    <td>passwd</td>
-                                    <td>username</td>
+                                    <td>Dob</td>
+                                    <td>Age</td>
                                     <td>Roles</td>
                                     
                                 </tr>
@@ -123,8 +123,8 @@ class UserComponent extends React.Component {
                                         <td>{user.firstName}</td>
                                         <td>{user.lastName}</td>
                                         <td>{user.email}</td>
-                                        <td className="userpass">{user.password}</td>
-                                        <td>{user.username}</td>
+                                        <td >{user.dob}</td>
+                                        <td>{user.age}</td>
                                         <td>{user.roles.map(role=>role.name+", ")}</td>
                                     </tr>):console.log("None")
                                     

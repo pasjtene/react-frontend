@@ -108,6 +108,7 @@ class UserComponent extends React.Component {
                                     <td>email</td>
                                     <td>Dob</td>
                                     <td>Age</td>
+                                    <td>Joined</td>
                                     <td>Roles</td>
                                     
                                 </tr>
@@ -125,6 +126,7 @@ class UserComponent extends React.Component {
                                         <td>{user.email}</td>
                                         <td >{user.dob}</td>
                                         <td>{user.age}</td>
+                                        <td>{user.created}</td>
                                         <td>{user.roles.map(role=>role.name+", ")}</td>
                                     </tr>):console.log("None")
                                     

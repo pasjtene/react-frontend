@@ -225,7 +225,7 @@ const handleLastNameChange = (id, target) => {
 
                 <div> 
                     <input type="checkbox"
-                            id={user.dob.slice(0,4)}
+                            id="userdob"
                             onChange={(e)=>{
                                 handleDobChecked(e.target.id, e.target.checked);
                                 updateChecked (e.target.checked)
@@ -236,7 +236,7 @@ const handleLastNameChange = (id, target) => {
                             {dobChecked?
 
                                 <input type="date" value={dob}
-                                id={user.dob.slice(0,4)}
+                                id="userdob1"
                                 onChange={(e)=>{handleDobChange(e.target.id, e.target.value)}}
                                 />:""
                                 }

@@ -124,7 +124,7 @@ class UserComponent extends React.Component {
                                         <td>{user.firstName}</td>
                                         <td>{user.lastName}</td>
                                         <td>{user.email}</td>
-                                        <td >{user.dob}</td>
+                                        <td >{user.dob?user.dob:""}</td>
                                         <td>{user.age}</td>
                                         <td>{user.created}</td>
                                         <td>{user.roles.map(role=>role.name+", ")}</td>

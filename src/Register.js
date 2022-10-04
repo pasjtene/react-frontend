@@ -110,6 +110,8 @@ try {
     const response = await UserService.registerUser(JSON.stringify({firstName, lastName, email, password})
 
     );
+
+    
     console.log(response?.data);
     setSuccess(true);
     //return;

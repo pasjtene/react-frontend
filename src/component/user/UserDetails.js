@@ -8,6 +8,7 @@ import UploadFile from "../UploadFile";
 import UserRoles from "./UserRoles";
 import UserImages from "./UserImages";
 import AppService from "../../services/AppService";
+import UserInfo from "./UserInfo";
 //import Cookies from 'js-cookie';
 
 
@@ -66,28 +67,32 @@ const UserDetails = (props) => {
         <span className='left-nav-item'>Shops</span>
         <span className='left-nav-item' onClick={(e)=>{setHomePage("roles")}}>Roles</span>
         <span className='left-nav-item'>Pages</span>
+        <span className='left-nav-item' onClick={(e)=>{setHomePage("info")}}>Personal details</span>
         
     </div>
 
                 <div className="container">
 
                 
-                <h1 className="text-center">User details for ..1 {props.user.firstName}</h1>
+                <h5 className="text-center">User details for ..1 {user.fullName} </h5>
                     <div className="user-detail">
 
                     <img className="imgmidsize"  src={AppService.show_image_url(user.profileImagePath) } />
 
                     <div>
-                    <h1> {props.user.firstName} {props.user.lastName}</h1>
-                    <h4> {props.user.email}</h4>
-                    <h4>{user.roles? user.roles.map(role=>role.name+", "):""}</h4>
+                    <h6>Name: {user.firstName} </h6> 
+                    <h6>email: {user.email} </h6> 
+                    <h6>Age: {user.age}</h6>
+                    <h6>roles: {user.roles? user.roles.map(role=>role.name+", "):""}</h6>
                     </div>
                 
                     </div>
                    
                                 {homePage=="roles"?<UserRoles/>:null}
                                 {homePage=="images"?<UserImages user={user}/>:null}
+                                {homePage=="info"?<UserInfo user={user}/>:null}
                                 {props.homePage=="images"?<UserImages user={props.user}/>:null}
+                                {props.homePage=="info"?<UserInfo user={props.user}/>:null}
                        
                     </div>
 

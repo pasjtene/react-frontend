@@ -10,19 +10,7 @@ const instance = axios.create({
     baseURL: API_SERVER,
     })
     
-    
-    //configure({ instance })
-    
-    
-   // const [{ data, loading, error }, refetch] = useAxios()
-
-
-
-
-
-
-//const USERS_REST_API_URL = 'http://localhost:8080/talodu/api/users';
-
+   
 const mylocation = window.location.origin;
 
 
@@ -162,29 +150,7 @@ class UserService {
 
 
     uploadFile(data) {
-        
-
-        /*
-        if(mylocation === "http://localhost:3000") {
-        
-            return axios.post(LOCAL_FILE_UPLOAD_URL, data, {
-                headers: { 'Content-Type': 'multipart/form-data'}
-        
-          }
-            );
-            
-
-        } else {
-            
-            return axios.post(FILE_UPLOAD_URL, data, {
-                headers: { 'Content-Type': 'multipart/form-data'}
-        
-          });
-
-        }
-
-        */
-
+      
 
         return axios.post(AppService.app_url("/api/uploadfile"), data, {
             headers: { 'Content-Type': 'multipart/form-data'}
@@ -195,47 +161,24 @@ class UserService {
 
 
     registerUser(data) {
-
-
         return axios.post(AppService.app_url("/api/register"), data,
             {
                  headers: { 'Content-Type': 'application/json'}
          
            });
+    }
 
-
+    updateUser(data) {
+        return axios.post(AppService.app_url("/api/update"), data,
+            {
+                 headers: { 'Content-Type': 'application/json'}
+         
+           });
     }
 
 
 
 
-
-/*
-    registerUser(data) {
-        if(mylocation === "http://localhost:3000") {
-        
-            return axios.post(LOCAL_REGISTER_API_URL, data,
-                {
-                     headers: { 'Content-Type': 'application/json'}
-             
-               }
-            );
-            
-
-        } else {
-            
-            return axios.post(REGISTER_API_URL, data,
-                {
-                     headers: { 'Content-Type': 'application/json'}
-             
-               });
-
-        }
-
-
-    }
-
-    */
 
     authenticate(data) {
 
@@ -243,24 +186,6 @@ class UserService {
             withCredentials: true
           })
 
-
-          /*
-        console.log("The current location...", window.location.origin);
-        if(mylocation === "http://localhost:3000") {
-
-       //const resp = instance.post(LOCAL_LOGIN_URL, data, { headers: { 'Content-Type': 'application/json'} });
-       
-        
-            return instance.post(LOCAL_LOGIN_URL, data, { headers: { 'Content-Type': 'application/json'} });
-           //return resp;
-            
-        } else {
-            
-            return instance.post(LOGIN_URL, data, { headers: { 'Content-Type': 'application/json'} });
-           
-        }
-
-        */
 
         return instance.post(AppService.app_url("/api/authenticate"), data, { headers: { 'Content-Type': 'application/json'} });
 
@@ -270,32 +195,6 @@ class UserService {
 
 
     deleteUsersCSV(data) {
-
-
-        /*
-        const instance = axios.create({
-            withCredentials: true
-          })
-        console.log("The datum..",data);
-
-        if(mylocation === "http://localhost:3000") {
-            console.log("We are on the client, the cookie is....");
-            return axios.post(LOCAL_DELETE_USERS_API_URL, data, 
-                { headers: {  Authorization: true}, withCredentials: true } 
-                );
-        } else {
-
-            console.log("We are on the server, the cookie is....");
-            
-            return axios.post(DELETE_USERS_API_URL, data, 
-                { headers: {  Authorization: true}, withCredentials: true } 
-                );
-                
-    
-        }
-
-        */
-
 
 
         return axios.post(AppService.app_url("/api/deleteusers"), data, 

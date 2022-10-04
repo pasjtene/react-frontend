@@ -70,20 +70,12 @@ const UserRoles = ()  => {
     
 
     const handleSelectedRole = (id, roleSelected) => {
-        //setSelectedUser(id);
-        
-        console.log(id+roleSelected);
-        
         
         var array = [...selectedRoles];
             const index = array.indexOf(id);
     
         if(roleSelected) {
             setSelectedRole(id+roleSelected);
-            //setSelectedUser(id);
-    
-            //console.log("Is user auth ?..", UserService.getAuthCookie());
-            //console.log("The user is selected");
             selectedRoles.push(id);
     
             setNrolesToAdd(selectedRoles.length);
@@ -108,20 +100,13 @@ const UserRoles = ()  => {
 
 
     const handleRemoveSelectedRole = (id, roleSelected) => {
-        //setSelectedUser(id);
-        
-        console.log(id+roleSelected);
-        
         
         var array = [...selectedRolesToRemove];
             const index = array.indexOf(id);
     
         if(roleSelected) {
             setSelectedRole(id+roleSelected);
-            //setSelectedUser(id);
-    
-            //console.log("Is user auth ?..", UserService.getAuthCookie());
-            //console.log("The user is selected");
+        
             selectedRolesToRemove.push(id);
     
             setNrolesToRemove(selectedRolesToRemove.length);
@@ -135,10 +120,9 @@ const UserRoles = ()  => {
                array.splice(index, 1); // 2nd parameter means remove one item only
                setSelectedRolesToRemove(array);
                 setSelectedRole(id+roleSelected);
-                //setNrolesToAdd(array.length);
+         
                 setNrolesToRemove(array.length);
-                //setNrolesToAdd(0);
-                //console.log(Object.assign({}, array));
+            
                 console.log("The roles to remove..",selectedRolesToRemove);
                 
             }
@@ -147,9 +131,6 @@ const UserRoles = ()  => {
         
     }
     
-
-
-
 
 
 const addUserRoles = () => {
@@ -174,20 +155,15 @@ const addUserRoles = () => {
                     }
                     setSelectedRoles([]);
                     setNrolesToAdd(0);
-                    
-                    //setNrolesToRemove(0);
                   
-                    
                 })
                 .catch(err => {
                     console.log(err)
                     setSelectedRoles([]);
                     setNrolesToAdd(0);
-                    
-                    //setNrolesToRemove(0);
+                 
                 })
 }
-
 
 
 const removeUserRoles = () => {
@@ -252,13 +228,9 @@ const handleRemoveUserRoleChecked = (checked) => {
 } 
 
 
-
-
-
     return (
 
 
-     
         <div className="content1">
 
             <div>
@@ -267,16 +239,8 @@ const handleRemoveUserRoleChecked = (checked) => {
                         
             <div>{userAndRoles.roles? userAndRoles.roles.map(role=> <div>{role.name}  <input type="checkbox" id={role.id} onChange={(e)=>{
                                                     
-                                                    //setSelectedUser(e.target.id);
-                                                    //handleRemoveUserRoleChecked(e.target.checked);
                                                     handleRemoveSelectedRole(e.target.id, e.target.checked) 
-                                                    //setUserRoleChecked(userRoleChecked+e.target.id)
-
-                                                    //handleSelectedUser(e.target.id, e.target.checked);
-                                                    console.log(e.target.id, e.target.checked);
-                                                    //setSelectedId(e.target.id);
-                                                    //setBoxChecked(e.target.checked);
-                                                    //setUserAdded("yes");
+                                                    
                                                     }}/>  </div>):""}</div> 
                                                     {nRolesToRemove?<span className="remove-roles" onClick={(e)=>{removeUserRoles()}}>Remove {nRolesToRemove} role{nRolesToRemove>1?"s":""}  </span>:null}
 
@@ -301,8 +265,6 @@ const handleRemoveUserRoleChecked = (checked) => {
                 {nRolesToAdd?<span className="add-roles" onClick={(e)=>{addUserRoles()}}>Add {nRolesToAdd} role{nRolesToAdd>1?"s":""} </span>:null}
             </div>
 
-            
-          
         </div>
     )
 
